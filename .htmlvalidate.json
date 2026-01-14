@@ -1,0 +1,7 @@
+{
+  "rules": {
+    "prefer-button": "off",
+    "wcag/h30": "off",
+    "unique-landmark": "off"
+  }
+}
