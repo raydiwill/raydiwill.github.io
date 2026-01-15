@@ -7,7 +7,7 @@
 <html lang="en">
   <head>
     <title>Raydi TRAN</title>
-    <link rel="icon" type="image" href="images/favicon.ico">
+    <link rel="icon" type="image" href="images/favicon.ico" />
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -96,22 +96,24 @@
         <!-- Featured Post -->
         <article class="post featured">
           <header class="major">
-            <span class="date">April 25, 2017</span>
-            <h2>
+            <h1 style="font-size: 2.5rem">
               <a href="#"
-                >And this is a<br />
-                massive headline</a
+                >I want things to work<br />
+                Free of bugs during weekend</a
               >
-            </h2>
+            </h1>
             <p>
-              Aenean ornare velit lacus varius enim ullamcorper proin aliquam<br />
-              facilisis ante sed etiam magna interdum congue. Lorem ipsum
-              dolor<br />
-              amet nullam sed etiam veroeros.
+              I’m Raydi — a business-focused Analytics Engineer with 1+ YOE in
+              Adtech that will turn your messy data into reliable,
+              production-ready ELT pipelines. I build workflows with
+              Airflow/SQL, deploy ML services (FastAPI/Docker), and created
+              analyst-facing tools to speed up decision making for your company.
+              <br /><br />
+              Let's connect and let me clean up your messy problem &#128521;
             </p>
           </header>
           <a href="#" class="image main"
-            ><img src="images/pic01.jpg" alt=""
+            ><img src="images/prof_hero.webp" alt=""
           /></a>
           <ul class="actions special">
             <li><a href="#" class="button large">Full Story</a></li>
@@ -255,9 +257,10 @@
         </section>
 
         <!-- Footer -->
+        <!-- To be looking ahead and see how to turn to other pages -->
         <footer>
-          <div class="pagination">
-            <!--<a href="#" class="previous">Prev</a>-->
+          <!-- <div class="pagination">
+            <a href="#" class="previous">Prev</a>
             <a href="#" class="page active">1</a>
             <a href="#" class="page">2</a>
             <a href="#" class="page">3</a>
@@ -266,70 +269,80 @@
             <a href="#" class="page">9</a>
             <a href="#" class="page">10</a>
             <a href="#" class="next">Next</a>
-          </div>
+          </div> -->
         </footer>
       </div>
 
       <!-- Footer -->
       <footer id="footer">
         <section>
-          <form method="post" action="#">
+          <form method="POST" action="https://formspree.io/f/xnjjngzg" id="contact-form">
             <div class="fields">
               <div class="field">
                 <label for="name">Name</label>
-                <input type="text" name="name" id="name" />
+                <input type="text" name="name" id="name" required />
               </div>
               <div class="field">
                 <label for="email">Email</label>
-                <input type="text" name="email" id="email" />
+                <input type="email" name="email" id="email" required />
               </div>
               <div class="field">
                 <label for="message">Message</label>
-                <textarea name="message" id="message" rows="3"></textarea>
+                <textarea name="message" id="message" rows="3" required></textarea>
               </div>
             </div>
             <ul class="actions">
               <li><input type="submit" value="Send Message" /></li>
             </ul>
+            <p id="form-status" style="margin-top: 1em; padding: 1em; border-radius: 4px; display: none;"></p>
           </form>
         </section>
         <section class="split contact">
           <section class="alt">
             <h3>Address</h3>
-            <p>
-              1234 Somewhere Road #87257<br />
-              Nashville, TN 00000-0000
-            </p>
+            <p><a href="#">Île-de-France, France</a></p>
           </section>
           <section>
             <h3>Phone</h3>
-            <p><a href="#">(000) 000-0000</a></p>
+            <p><a href="#">(+33) 6 62 48 81 52</a></p>
           </section>
           <section>
             <h3>Email</h3>
-            <p><a href="#">info@untitled.tld</a></p>
+            <p><a href="#">duong.tranhn1102@gmail.com</a></p>
           </section>
           <section>
             <h3>Social</h3>
             <ul class="icons alt">
               <li>
-                <a href="#" class="icon brands alt fa-twitter"
-                  ><span class="label">Twitter</span></a
+                <a
+                  href="https://www.linkedin.com/in/kduongtran/"
+                  class="icon brands alt fa-linkedin"
+                  target="_blank"
+                  ><span class="label">LinkedIn</span></a
                 >
               </li>
               <li>
-                <a href="#" class="icon brands alt fa-facebook-f"
+                <a
+                  href="https://github.com/raydiwill"
+                  class="icon brands alt fa-github"
+                  target="_blank"
+                  ><span class="label">GitHub</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.facebook.com/MrRaydi"
+                  class="icon brands alt fa-facebook-f"
+                  target="_blank"
                   ><span class="label">Facebook</span></a
                 >
               </li>
               <li>
-                <a href="#" class="icon brands alt fa-instagram"
+                <a
+                  href="https://www.instagram.com/mrraydi/"
+                  class="icon brands alt fa-instagram"
+                  target="_blank"
                   ><span class="label">Instagram</span></a
-                >
-              </li>
-              <li>
-                <a href="#" class="icon brands alt fa-github"
-                  ><span class="label">GitHub</span></a
                 >
               </li>
             </ul>
@@ -340,8 +353,8 @@
       <!-- Copyright -->
       <div id="copyright">
         <ul>
-          <li>&copy; Untitled</li>
-          <li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+          <li>Design: <a>Massively</a></li>
+          <li>Credit: <a href="https://html5up.net">HTML5 UP</a></li>
         </ul>
       </div>
     </div>
