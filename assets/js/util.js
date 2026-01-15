@@ -1,3 +1,56 @@
+// Contact Form Handler with AJAX submission
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const form = e.target;
+  const formData = new FormData(form);
+  const statusMsg = document.getElementById('form-status');
+  const submitBtn = form.querySelector('input[type="submit"]');
+  
+  // Disable submit button
+  submitBtn.disabled = true;
+  submitBtn.value = 'Sending...';
+  
+  // Send form data
+  fetch(form.action, {
+    method: 'POST',
+    body: formData,
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+  .then(response => {
+    if (response.ok) {
+      // Success
+      statusMsg.textContent = '✓ Message sent successfully! I\'ll get back to you soon.';
+      statusMsg.style.backgroundColor = '#2ecc71';
+      statusMsg.style.color = 'white';
+      statusMsg.style.display = 'block';
+      form.reset();
+      
+      // Hide message after 5 seconds
+      setTimeout(() => {
+        statusMsg.style.display = 'none';
+      }, 5000);
+    } else {
+      throw new Error('Form submission failed');
+    }
+  })
+  .catch(error => {
+    // Error
+    statusMsg.textContent = '✗ Oops! Something went wrong. Please try again.';
+    statusMsg.style.backgroundColor = '#e74c3c';
+    statusMsg.style.color = 'white';
+    statusMsg.style.display = 'block';
+  })
+  .finally(() => {
+    // Re-enable submit button
+    submitBtn.disabled = false;
+    submitBtn.value = 'Send Message';
+  });
+});
+
+
 (function($) {
 
 	/**
