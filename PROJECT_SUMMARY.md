@@ -8,7 +8,8 @@ Personal portfolio website to showcase professional experience, education, proje
 - **Frontend**: HTML5, CSS3, JavaScript (jQuery)
 - **Styling**: Custom SCSS (pre-compiled), Font Awesome icons
 - **Libraries**: jQuery, Scrollex (parallax/scroll effects), Scrolly (smooth scroll)
-- **Deployment**: GitHub Pages
+- **Form Backend**: Formspree (AJAX submissions, no redirect)
+- **Deployment**: GitHub Pages (Live at raydiwill.github.io)
 - **Build**: No build process required (pre-compiled assets)
 
 ## Project Structure
@@ -29,11 +30,11 @@ raydiwill.github.io/
 ## Key Features
 1. **Responsive Design**: Mobile-first, fluid layouts with breakpoint-based adaptations
 2. **Parallax Background**: Huge background image with scroll effects
-3. **Article Layout**: Post-style content blocks with featured images
-4. **Navigation**: Fixed header with smooth scrolling, social media links
-5. **Contact Form**: Simple form in footer (needs action endpoint configuration)
-6. **Pagination**: Multi-page navigation UI
-7. **Scroll Effects**: Powered by Scrollex for smooth animations
+3. **Project Showcase**: 4 live projects with GitHub links and custom images
+4. **Navigation**: Fixed header with smooth scrolling, 5 social media platforms
+5. **Contact Form**: Formspree integration with AJAX submission (no redirect)
+6. **Scroll Effects**: Powered by Scrollex for smooth animations
+7. **Professional Branding**: Custom favicon, resume link, personalized bio
 
 ## Design System
 - **Theme**: Dark, text-heavy, article-oriented design
@@ -51,202 +52,210 @@ SCSS source files located in `assets/sass/` for theming:
 
 Requires SASS compiler if modifications needed.
 
-## Page Structure Strategy
+## Deployment Information
 
-### Template Files Purpose
+### Live Site
+- **URL**: https://raydiwill.github.io
+- **Status**: ✅ Live and functional
+- **Hosting**: GitHub Pages
+- **Branch**: master
+- **Last Updated**: January 2026
 
-1. **`index.html`** - Projects Showcase (Main Page) - "Home" section
-
-    - **Fullscreen Intro** - Name + tagline splash screen
-    - **Featured Section** - About Me TL;DR (3-4 sentences + image)
-        - Links to `about.html` via "Read Full Story" button
-        - Functions as brief professional summary
-        - Image: Professional photo or workspace shot
-    - **Project Grid** - 6+ project showcases
-        - Each links to individual `project-*.html` detail pages
-
-    - Multi-column grid layout for project portfolio
-    - Featured project section (hero position)
-    - 6+ project cards in grid layout
-    - Built-in pagination UI
-    - **Usage**: Main landing page, no duplication needed
-
-2. **`generic.html`** - Single-Column Content Template
-   - Clean single-column layout for long-form content
-   - **Usage**: Duplicate for each content page needed
-   - Create `about.html` (copy of generic.html)
-   - Create `project-detail-*.html` (one copy per project)
-
-3. **`elements.html`** - UI Component Reference
-   - Complete showcase of available HTML/CSS components
-   - Contains: forms, buttons, tables, lists, images, icons, etc.
-   - **Usage**: Developer reference only - DO NOT use as content page
-   - Keep in repo but hide from public navigation
-
-### Site Architecture
+### Repository Structure
 ```
-index.html (Projects Grid)
-├── about.html (from generic.html)
-├── project-ml-classifier.html (from generic.html)
-├── project-react-dashboard.html (from generic.html)
-├── project-api-tool.html (from generic.html)
-└── [more project pages as needed]
+raydiwill.github.io/
+├── index.html              # Main portfolio page (✅ Complete)
+├── about.html              # About page (⏳ Needs content)
+├── elements.html           # UI reference (kept for dev)
+├── assets/
+│   ├── css/               # Pre-compiled stylesheets
+│   ├── js/                # jQuery libraries + utilities
+│   └── webfonts/          # Font Awesome fonts
+├── images/                # Project images + favicon
+│   ├── favicon.ico
+│   ├── prof_hero.webp
+│   ├── stock.webp
+│   ├── telecom.webp
+│   ├── bank.webp
+│   └── bot.webp
+└── original_backup/       # Template backups
 ```
 
-### Navigation Structure
-Update in ALL HTML files:
-```html
-<ul class="links">
-  <li><a href="index.html">Home</a></li>
-  <li><a href="about.html">About</a></li>
-</ul>
-```
+### Next Steps for Full Launch
+1. **Content Completion**
+   - Write About page content
+   - Add project detail pages (optional - currently link to GitHub)
+   - Update page titles and meta descriptions
 
-### Content Templates
+2. **SEO Optimization**
+   - Add meta description tags
+   - Add Open Graph tags for social sharing
+   - Create sitemap.xml
+   - Add robots.txt
 
-#### Index.html - Project Card Structure
-```html
-<article class="post featured">
-  <header>
-    <span class="date">January 2026</span>
-    <h2><a href="project-name.html">Project Title</a></h2>
-    <p>2-3 sentence summary (under 50 words)</p>
-  </header>
-  <a href="project-name.html" class="image main">
-    <img src="images/project-hero.jpg" alt="" />
-  </a>
-  <ul class="actions special">
-    <li><a href="project-name.html" class="button large">View Details</a></li>
-  </ul>
-</article>
+3. **Performance Optimization**
+   - Already using WebP images ✅
+   - Consider lazy loading for images
+   - Test page speed with Lighthouse
 
-<section class="posts">
-  <article>
-    <header>
-      <span class="date">December 2025</span>
-      <h2><a href="project-2.html">Project 2</a></h2>
-    </header>
-    <a href="project-2.html" class="image fit">
-      <img src="images/project-2.jpg" alt="" />
-    </a>
-    <p>Brief description...</p>
-    <ul class="actions special">
-      <li><a href="project-2.html" class="button">View Project</a></li>
-    </ul>
-  </article>
-  <!-- Repeat for more projects -->
-</section>
-```
-
-#### About.html (from generic.html)
-```html
-<section class="post">
-  <header class="major">
-    <h1>About Me</h1>
-  </header>
-  <p>Professional summary paragraph...</p>
-  <p>Technical background and expertise...</p>
-  
-  <h2>Technical Skills</h2>
-  <ul>
-    <li>Languages: Python, JavaScript, Java</li>
-    <li>Frameworks: React, Node.js, Flask</li>
-    <li>Tools: Git, Docker, AWS</li>
-  </ul>
-  
-  <h2>Experience</h2>
-  <p>Work history and achievements...</p>
-  
-  <h2>Education</h2>
-  <p>Degrees and certifications...</p>
-</section>
-```
-
-#### Project Detail (from generic.html)
-```html
-<section class="post">
-  <header class="major">
-    <span class="date">January 2026</span>
-    <h1>Project Title</h1>
-    <p>Tech Stack: Python • TensorFlow • Flask • AWS</p>
-  </header>
-  
-  <span class="image fit">
-    <img src="images/project-hero.jpg" alt="" />
-  </span>
-  
-  <h2>The Challenge</h2>
-  <p>Problem statement and context...</p>
-  
-  <h2>Solution & Implementation</h2>
-  <p>Technical approach and architecture decisions...</p>
-  <ul>
-    <li>Key technical decision 1</li>
-    <li>Key technical decision 2</li>
-  </ul>
-  
-  <h2>Results & Impact</h2>
-  <ul>
-    <li>Metric 1: 94% accuracy achieved</li>
-    <li>Metric 2: 500+ active users</li>
-    <li>Metric 3: 50% performance improvement</li>
-  </ul>
-  
-  <ul class="actions">
-    <li><a href="https://github.com/username/repo" class="button icon brands fa-github">View Code</a></li>
-    <li><a href="https://demo-url.com" class="button primary">Live Demo</a></li>
-  </ul>
-</section>
-```
+4. **Analytics** (Optional)
+   - Add Google Analytics
+   - Track form submissions
+   - Monitor project link clicks
 
 ## Current State
-Clean HTML5 UP template ready for content customization. Contains placeholder text, demo images, and inactive form/social links.
+**Status**: Live and deployed on GitHub Pages
+
+### Completed Features ✅
+1. **Personal Branding**
+   - Custom page title: "Raydi TRAN"
+   - Favicon configured (images/favicon.ico)
+   - Intro section with personalized tagline
+   - Professional hero image (prof_hero.webp)
+
+2. **Navigation & Links**
+   - Header: Resume link → raydiwill.github.io/resume/resume.pdf
+   - Navigation menu: Home, About
+   - Social media icons (4 platforms):
+     - GitHub: raydiwill
+     - LinkedIn: kduongtran
+     - Medium: @duong.tranhn1102
+     - Instagram: mrraydi
+   - All links open in new tabs (target="_blank")
+
+3. **Featured About Section**
+   - Custom headline: "I want things to work / Free of bugs during weekend"
+   - Professional bio highlighting:
+     - Role: Analytics Engineer (1+ YOE in Adtech)
+     - Skills: Airflow/SQL, FastAPI/Docker, ELT pipelines
+   - CTA button links to about.html
+
+4. **Project Showcase (4 Live Projects)**
+   - **Stock Price Movement Prediction**
+     - GitHub: raydiwill/stock-prediction-ml
+     - Image: stock.webp
+     - Description: End-to-end MLOps platform
+   
+   - **Deep Learning Churn Prediction (Telecoms)**
+     - GitHub: raydiwill/dsa-4-action-learning
+     - Image: telecom.webp
+     - Description: MVP with state-of-the-art deep learning
+   
+   - **Customer Bank Churn Prediction**
+     - GitHub: raydiwill/customers-churn-ml-app
+     - Image: bank.webp
+     - Description: Web application with ML
+   
+   - **LinkedIn Job Scraper Bot**
+     - GitHub: raydiwill/linkedin_job_scraper
+     - Image: bot.webp
+     - Description: Automated job posting scraper
+
+5. **Contact Form (Functional)**
+   - Service: Formspree (form ID: xnjjngzg)
+   - AJAX submission (no page redirect)
+   - Success/error notifications (green/red pop-ups)
+   - Auto-clears after 5 seconds
+   - Fields: Name, Email, Message (all required)
+   - Email delivery to: duong.tranhn1102@gmail.com
+
+6. **Footer Contact Information**
+   - Location: Île-de-France, France
+   - Phone: (+33) 6 62 48 81 52
+   - Email: duong.tranhn1102@gmail.com
+   - Social links (5 platforms): LinkedIn, GitHub, Medium, Facebook, Instagram
+
+7. **Images & Assets**
+   - Custom project images (4 webp files: stock, telecom, bank, bot)
+   - Professional hero image (prof_hero.webp)
+   - Favicon (favicon.ico)
+   - All optimized for web performance
+
+8. **Design Customizations**
+   - Inline font-size adjustment for main headline (2.5rem)
+   - Pagination section hidden (commented out)
+   - Dark theme with cyan accent colors maintained
+
+### Pending Tasks ⏳
+- [ ] Complete About page content (about.html still has placeholder)
+- [ ] Add project detail pages (currently links go to GitHub repos)
+- [ ] Update page meta tags (description, og:image for social sharing)
+- [ ] Consider adding more projects (currently 4 showcased)
+- [ ] Test mobile responsiveness thoroughly
+- [ ] Add Google Analytics (optional)
 
 ## Implementation Roadmap
 
-### Phase 1: Structure Setup
-- [ ] Duplicate `generic.html` → `about.html`
-- [ ] Create project detail pages from `generic.html` (one per project)
-- [ ] Update navigation in all HTML files
-- [ ] Remove/hide `elements.html` from navigation
+### Phase 1: Structure Setup ✅ COMPLETED
+- [x] Update personal information (name, title, bio)
+- [x] Configure favicon
+- [x] Update navigation links
+- [x] Add social media links (GitHub, LinkedIn, Medium, Instagram, Facebook)
+- [x] Customize intro section
+- [x] Update resume link
 
-### Phase 2: Content Creation
-- [ ] Write About page content (bio, skills, experience)
-- [ ] Draft 5-7 project descriptions for index.html
-- [ ] Create detailed project pages for each showcase
-- [ ] Gather/create all project images (1 hero bg + 7+ project screenshots)
+### Phase 2: Content Creation ✅ COMPLETED
+- [x] Write professional bio for featured section
+- [x] Add 4 project cards with descriptions:
+  - Stock Price Prediction (MLOps)
+  - Telecom Churn Prediction (Deep Learning)
+  - Banking Churn Prediction (ML Web App)
+  - LinkedIn Job Scraper (Automation)
+- [x] Generate/add project images (stock.webp, telecom.webp, bank.webp, bot.webp)
+- [x] Add professional hero image (prof_hero.webp)
+- [ ] Complete About page content (placeholder remains)
 
-### Phase 3: Configuration
-- [ ] Replace background image (`images/bg.jpg`)
-- [ ] Update header logo/title
-- [ ] Configure contact form action (Formspree or similar)
-- [ ] Add real social media links
-- [ ] Update meta tags (title, description, og:image)
+### Phase 3: Configuration ✅ COMPLETED
+- [x] Add favicon (images/favicon.ico)
+- [x] Configure contact form with Formspree
+- [x] Implement AJAX form submission (no redirect)
+- [x] Add success/error notifications
+- [x] Update contact information (address, phone, email)
+- [x] Link all social media profiles
+- [x] Update copyright section
 
-### Phase 4: Polish & Deploy
+### Phase 4: Polish & Deploy ✅ COMPLETED
+- [x] Test form functionality
+- [x] Verify all external links open in new tabs
+- [x] Hide pagination section
+- [x] Deploy to GitHub Pages
 - [ ] Test responsive design on mobile/tablet
-- [ ] Verify all internal links work
-- [ ] Add favicon
-- [ ] Push to GitHub Pages (`main` branch)
-- [ ] Configure custom domain (optional)
+- [ ] Add meta tags for SEO
+- [ ] Configure custom domain (if desired)
 
 ## Content Guidelines
 
-### Project Descriptions
+### Project Descriptions ✅ Implemented
 - Keep summaries under 50 words per card
 - Focus on **results** over technology lists
-- Use metrics when possible (e.g., "94% accuracy", "500+ users")
-- Include call-to-action ("View Details", "See Demo")
+- Include GitHub repo links
+- Each project has dedicated call-to-action button
 
-### Image Requirements
-- Hero background: 1920x1080px (professional/tech-themed)
-- Project screenshots: 800x600px minimum
-- Optimize for web (use compressed JPG/PNG)
-- Use consistent image styling across projects
+### Image Requirements ✅ Completed
+- Hero image: prof_hero.webp (professional photo)
+- Project images: stock.webp, telecom.webp, bank.webp, bot.webp
+- All images optimized for web (WebP format)
+- Consistent dark theme with cyan accents
 
-### Links to Update
-- Navigation menu items (all pages)
-- Social media icons (header + footer)
-- Project cards → detail pages
-- GitHub/demo buttons on project pages
-- Contact form action endpoint
+### Links Configuration ✅ Completed
+- Navigation: Home, About
+- Social media: GitHub, LinkedIn, Medium, Instagram, Facebook (all target="_blank")
+- Project cards: Direct GitHub repo links
+- Resume: Hosted on raydiwill.github.io/resume/resume.pdf
+- Contact form: Formspree endpoint active
+
+### Technical Improvements Made
+1. **Form UX Enhancement**
+   - AJAX submission prevents page redirect
+   - Inline success/error notifications (green/red)
+   - Auto-hide messages after 5 seconds
+   - Button state management (disabled while sending)
+
+2. **Navigation Fixes**
+   - All external links open in new tabs
+   - target="_blank" properly placed on <a> tags (not <span>)
+
+3. **Design Customizations**
+   - Custom headline font size (2.5rem)
+   - Pagination hidden for cleaner look
+   - Professional disclaimer added to featured section
