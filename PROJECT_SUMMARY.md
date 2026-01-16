@@ -16,15 +16,19 @@ Personal portfolio website to showcase professional experience, education, proje
 ```
 raydiwill.github.io/
 ├── index.html              # Main portfolio page
-├── generic.html            # Generic content template
-├── elements.html           # UI elements reference
+├── about.html              # Personal bio and photo gallery
+├── experience.html         # Professional experience, education, skills
+├── elements.html           # UI elements reference (dev only)
 ├── assets/
 │   ├── css/               # Pre-compiled stylesheets (main.css, noscript.css)
 │   ├── js/                # Minified JavaScript libraries and scripts
 │   ├── sass/              # SCSS source files (for customization)
 │   └── webfonts/          # Font Awesome web fonts
-├── original_backup        # Backup
-└── images/                # Background and content images
+├── images/
+│   ├── projects/          # Project preview images
+│   ├── me/                # Personal photo gallery (4 portrait images)
+│   └── gallery/           # Additional image assets
+└── original_backup/       # Template backups
 ```
 
 ## Key Features
@@ -65,7 +69,8 @@ Requires SASS compiler if modifications needed.
 ```
 raydiwill.github.io/
 ├── index.html              # Main portfolio page (✅ Complete)
-├── about.html              # About page (⏳ Needs content)
+├── about.html              # Personal story & gallery (✅ Complete)
+├── experience.html         # Professional timeline (✅ Complete)
 ├── elements.html           # UI reference (kept for dev)
 ├── assets/
 │   ├── css/               # Pre-compiled stylesheets
@@ -74,18 +79,17 @@ raydiwill.github.io/
 ├── images/                # Project images + favicon
 │   ├── favicon.ico
 │   ├── prof_hero.webp
-│   ├── stock.webp
-│   ├── telecom.webp
-│   ├── bank.webp
-│   └── bot.webp
+│   ├── projects/          # Project screenshots
+│   │   ├── stock.webp
+│   │   ├── telecom.webp
+│   │   ├── bank.webp
+│   │   └── bot.webp
+│   └── me/                # Personal photos (me1-4.webp)
 └── original_backup/       # Template backups
-```
-
-### Next Steps for Full Launch
-1. **Content Completion**
-   - Write About page content
-   - Add project detail pages (optional - currently link to GitHub)
-   - Update page titles and meta descriptions
+```Enhancement** (Optional)
+   - Add project detail pages (currently link to GitHub repos)
+   - Add blog section for technical articles
+   - Create case studies for key projects
 
 2. **SEO Optimization**
    - Add meta description tags
@@ -97,8 +101,13 @@ raydiwill.github.io/
    - Already using WebP images ✅
    - Consider lazy loading for images
    - Test page speed with Lighthouse
+   - Optimize JavaScript bundles
 
 4. **Analytics** (Optional)
+   - Add Google Analytics or Plausible
+   - Track form submissions
+   - Monitor project link clicks
+   - A/B test CTA button
    - Add Google Analytics
    - Track form submissions
    - Monitor project link clicks
@@ -113,13 +122,14 @@ raydiwill.github.io/
    - Intro section with personalized tagline
    - Professional hero image (prof_hero.webp)
 
-2. **Navigation & Links**
-   - Header: Resume link → raydiwill.github.io/resume/resume.pdf
-   - Navigation menu: Home, About
-   - Social media icons (4 platforms):
+2. **Navigation & Links**, Experience
+   - Social media icons (5 platforms):
      - GitHub: raydiwill
      - LinkedIn: kduongtran
      - Medium: @duong.tranhn1102
+     - Instagram: mrraydi
+     - Facebook: MrRaydi
+   - All links open in new tabs with security (rel="noopener noreferrer
      - Instagram: mrraydi
    - All links open in new tabs (target="_blank")
 
@@ -173,13 +183,28 @@ raydiwill.github.io/
 
 8. **Design Customizations**
    - Inline font-size adjustment for main headline (2.5rem)
-   - Pagination section hidden (commented out)
-   - Dark theme with cyan accent colors maintained
+9. **About Page (✅ Complete)**
+   - Personal bio with company links (EPITA, Viettel Group, Adikteev)
+   - Career journey narrative (6 paragraphs with emojis)
+   - Bold highlighting of key skills and achievements
+   - Photo gallery section (4 portrait images in grid layout)
+   - Professional but personable tone
+
+10. **Experience Page (✅ Complete)**
+   - Work experience section with 3 positions:
+     - Analytics Engineer, Associate Data Analyst, Data Science Intern
+   - Education section with 2 degrees (M.Sc. and B.Sc.)
+   - Certifications organized by category (Cloud & ML)
+   - Technical skills grid (Languages, Frameworks, Data & Cloud)
+   - Visual enhancements: icons, boxes, blockquotes, alternate lists
 
 ### Pending Tasks ⏳
-- [ ] Complete About page content (about.html still has placeholder)
 - [ ] Add project detail pages (currently links go to GitHub repos)
 - [ ] Update page meta tags (description, og:image for social sharing)
+- [ ] Test mobile responsiveness thoroughly
+- [ ] Add Google Analytics (optional)
+- [ ] Consider adding blog section
+- [ ] Add more portfolio projects (currently 4 showcasedtion, og:image for social sharing)
 - [ ] Consider adding more projects (currently 4 showcased)
 - [ ] Test mobile responsiveness thoroughly
 - [ ] Add Google Analytics (optional)
@@ -187,7 +212,9 @@ raydiwill.github.io/
 ## Implementation Roadmap
 
 ### Phase 1: Structure Setup ✅ COMPLETED
-- [x] Update personal information (name, title, bio)
+- [x] Complete About page content with personal story
+- [x] Add Experience page with work history and education
+- [x] Create photo gallery (4 personal portrait image
 - [x] Configure favicon
 - [x] Update navigation links
 - [x] Add social media links (GitHub, LinkedIn, Medium, Instagram, Facebook)
@@ -198,9 +225,12 @@ raydiwill.github.io/
 - [x] Write professional bio for featured section
 - [x] Add 4 project cards with descriptions:
   - Stock Price Prediction (MLOps)
-  - Telecom Churn Prediction (Deep Learning)
-  - Banking Churn Prediction (ML Web App)
-  - LinkedIn Job Scraper (Automation)
+  - Telecom Churn Prediction (Deep Learning) with security attributes
+- [x] Hide pagination section
+- [x] Deploy to GitHub Pages
+- [x] Add rel="noopener noreferrer" to all external links
+- [x] Improve image alt text for accessibility
+- [x] Format all content for readability (75 chars per line)tomation)
 - [x] Generate/add project images (stock.webp, telecom.webp, bank.webp, bot.webp)
 - [x] Add professional hero image (prof_hero.webp)
 - [ ] Complete About page content (placeholder remains)
@@ -239,6 +269,26 @@ raydiwill.github.io/
 
 ### Links Configuration ✅ Completed
 - Navigation: Home, About
+
+4. **Security Best Practices**
+   - All external links use rel="noopener noreferrer"
+   - Prevents reverse tabnabbing attacks
+   - Protects referrer privacy
+
+5. **About Page Enhancements**
+   - Emoji-prefixed paragraphs for visual interest
+   - Bold formatting for key skills and companies
+   - External links to EPITA, Viettel Group, Adikteev
+   - Portrait photo gallery (4 images in responsive grid)
+   - 3-language fluency highlighted (English, French, Vietnamese)
+
+6. **Experience Page Features**
+   - Visual hierarchy with Font Awesome icons
+   - Boxed layout for each entry with cyan accent borders
+   - Blockquotes highlighting role summaries
+   - Alternate lists for cleaner bullet points
+   - Grid layouts for certifications and skills
+   - Sample data for prototyping (ready to replace)
 - Social media: GitHub, LinkedIn, Medium, Instagram, Facebook (all target="_blank")
 - Project cards: Direct GitHub repo links
 - Resume: Hosted on raydiwill.github.io/resume/resume.pdf
