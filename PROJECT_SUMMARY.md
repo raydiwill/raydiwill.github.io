@@ -24,6 +24,7 @@ raydiwill.github.io/
 ├── index.html              # Main portfolio page
 ├── about.html              # Personal bio and photo gallery
 ├── experience.html         # Professional experience, education, skills
+├── gallery.html            # Photography gallery with lightbox
 ├── elements.html           # UI elements reference (dev only)
 ├── assets/
 │   ├── css/               # Pre-compiled stylesheets (main.css, noscript.css)
@@ -33,7 +34,7 @@ raydiwill.github.io/
 ├── images/
 │   ├── projects/          # Project preview images
 │   ├── me/                # Personal photo gallery (4 portrait images)
-│   └── gallery/           # Additional image assets
+│   └── gallery/           # Photography gallery (24 webp images)
 └── original_backup/       # Template backups
 ```
 
@@ -77,6 +78,7 @@ raydiwill.github.io/
 ├── index.html              # Main portfolio page (✅ Complete)
 ├── about.html              # Personal story & gallery (✅ Complete)
 ├── experience.html         # Professional timeline (✅ Complete)
+├── gallery.html            # Photography showcase (✅ Complete)
 ├── elements.html           # UI reference (kept for dev)
 ├── assets/
 │   ├── css/               # Pre-compiled stylesheets
@@ -90,7 +92,8 @@ raydiwill.github.io/
 │   │   ├── telecom.webp
 │   │   ├── bank.webp
 │   │   └── bot.webp
-│   └── me/                # Personal photos (me1-4.webp)
+│   ├── me/                # Personal photos (me1-4.webp)
+│   └── gallery/           # Photography gallery (photo-01 to photo-24.webp)
 └── original_backup/       # Template backups
 ```Enhancement** (Optional)
    - Add project detail pages (currently link to GitHub repos)
@@ -234,6 +237,40 @@ raydiwill.github.io/
      - Bulleted achievements with metrics
      - Consistent cyan accent borders and Font Awesome icons
 
+11. **Gallery Page (✅ Complete)**
+   - **Layout**: CSS Grid with creative mixed formats
+     - 3-column grid layout (desktop)
+     - 2-column grid (tablet)
+     - 1-column grid (mobile)
+     - Base row height: 300px
+   
+   - **Image Variations**:
+     - Regular: 1 column × 1 row (standard square)
+     - Wide: 2 columns × 1 row (horizontal panorama)
+     - Tall: 1 column × 2 rows (vertical portrait)
+     - Full-width: 3 columns × 1 row (hero image)
+   
+   - **Gallery Features**:
+     - 24 professional photography images (photo-01.webp to photo-24.webp)
+     - Vertical portraits positioned across different columns (left, middle, right)
+     - No white space - grid auto-fills around tall images
+     - Hover effects (scale 1.02, opacity 0.9)
+   
+   - **Lightbox Functionality**:
+     - Click-to-enlarge modal view
+     - Full-size image display preserving aspect ratio
+     - Previous/Next navigation arrows
+     - Keyboard controls (ESC to close, ← → to navigate)
+     - Auto-assigns data-index to all gallery images
+     - Smooth fade-in and zoom-in animations
+     - Prevents body scroll when lightbox active
+   
+   - **Responsive Design**:
+     - Desktop: 3-column grid with mixed layouts
+     - Tablet (≤980px): 2-column grid
+     - Mobile (≤736px): 1-column grid, vertical portraits become regular
+     - Touch-friendly navigation buttons
+
 ### Pending Tasks ⏳
 - [ ] Test mobile responsiveness thoroughly
 - [ ] Add page meta tags for SEO (description, og:image for social sharing)
@@ -241,43 +278,153 @@ raydiwill.github.io/
 - [ ] Add project detail pages (optional - currently links go to GitHub repos)
 - [ ] Consider adding blog section (optional)
 
+## How to Add More Images to Gallery
+
+The gallery page uses CSS Grid with automatic flow, making it easy to add more images without breaking the layout.
+
+### Steps to Add Images:
+
+1. **Prepare Image File**
+   - Optimize image for web (recommended: WebP format)
+   - Name sequentially (e.g., `photo-25.webp`, `photo-26.webp`)
+   - Place in `/images/gallery/` directory
+
+2. **Add Grid Item to HTML**
+   - Open `gallery.html`
+   - Find the closing `</div>` tag of the `gallery-grid` div
+   - Insert new grid item before closing tag
+
+3. **Choose Layout Style**
+
+   **Regular Image (1 column × 1 row):**
+   ```html
+   <div class="grid-item">
+     <img
+       src="images/gallery/photo-25.webp"
+       alt="Photography by Raydi"
+       class="gallery-image"
+     />
+   </div>
+   ```
+
+   **Wide Image (2 columns × 1 row):**
+   ```html
+   <div class="grid-item grid-item-wide">
+     <img
+       src="images/gallery/photo-26.webp"
+       alt="Photography by Raydi"
+       class="gallery-image"
+     />
+   </div>
+   ```
+
+   **Tall Vertical Portrait (1 column × 2 rows):**
+   ```html
+   <div class="grid-item grid-item-tall">
+     <img
+       src="images/gallery/photo-27.webp"
+       alt="Photography by Raydi"
+       class="gallery-image"
+     />
+   </div>
+   ```
+
+   **Full-Width Hero (3 columns × 1 row):**
+   ```html
+   <div class="grid-item grid-item-large">
+     <img
+       src="images/gallery/photo-28.webp"
+       alt="Photography by Raydi"
+       class="gallery-image"
+     />
+   </div>
+   ```
+
+### Important Notes:
+- **Lightbox Auto-Detection**: JavaScript automatically detects all elements with `class="gallery-image"` - no code changes needed
+- **Grid Auto-Flow**: CSS Grid fills empty spaces automatically - no manual positioning required
+- **Responsive Behavior**: Layout adapts to screen size (3/2/1 columns for desktop/tablet/mobile)
+- **Mix Layout Styles**: Combine regular, wide, tall, and full-width items for creative variety
+- **Vertical Portrait Placement**: Position tall images in different columns (left/middle/right) for visual interest
+
+### Example: Adding 3 New Images
+```html
+<!-- Add before closing </div> of gallery-grid -->
+
+<!-- Regular square image -->
+<div class="grid-item">
+  <img
+    src="images/gallery/photo-25.webp"
+    alt="Photography by Raydi"
+    class="gallery-image"
+  />
+</div>
+
+<!-- Tall vertical portrait -->
+<div class="grid-item grid-item-tall">
+  <img
+    src="images/gallery/photo-26.webp"
+    alt="Photography by Raydi"
+    class="gallery-image"
+  />
+</div>
+
+<!-- Wide horizontal -->
+<div class="grid-item grid-item-wide">
+  <img
+    src="images/gallery/photo-27.webp"
+    alt="Photography by Raydi"
+    class="gallery-image"
+  />
+</div>
+```
+
+The grid will automatically arrange these images, fill any gaps, and include them in the lightbox navigation sequence.
+
 ## Implementation Roadmap
 
 ### Phase 1: Structure Setup ✅ COMPLETED
-- [x] Complete About page content with personal story
-- [x] Add Experience page with work history and education
-- [x] Create photo gallery (4 personal portrait image
 - [x] Configure favicon
 - [x] Update navigation links
 - [x] Add social media links (GitHub, LinkedIn, Medium, Instagram, Facebook)
 - [x] Customize intro section
 - [x] Update resume link
+- [x] Complete About page content with personal story
+- [x] Add Experience page with work history and education
+- [x] Create photo gallery (4 personal portrait images)
+- [x] Build Gallery page with 24 photography images
 
 ### Phase 2: Content Creation ✅ COMPLETED
 - [x] Write professional bio for featured section
-- [x] Add 4 project cards with descriptions:
-  - Stock Price Prediction (MLOps)
-  - Telecom Churn Prediction (Deep Learning) with security attributes
-- [x] Hide pagination section
-- [x] Deploy to GitHub Pages (Stock Prediction, Telecom Churn, Bank Churn, LinkedIn Scraper)
+- [x] Add 4 project cards with descriptions (Stock Prediction, Telecom Churn, Bank Churn, LinkedIn Scraper)
 - [x] Generate/add project images (stock.webp, telecom.webp, bank.webp, bot.webp)
 - [x] Add professional hero image (prof_hero.webp)
 - [x] Complete About page content with personal story
 - [x] Complete Experience page with actual work history and education
+- [x] Add 24 photography images to Gallery page (photo-01 to photo-24.webp)
+
+### Phase 3: Functionality ✅ COMPLETED
 - [x] Implement AJAX form submission (no redirect)
 - [x] Add success/error notifications
 - [x] Update contact information (address, phone, email)
 - [x] Link all social media profiles
 - [x] Update copyright section
+- [x] Build Gallery page with CSS Grid layout
+- [x] Implement lightbox functionality for Gallery page
+- [x] Add keyboard navigation for lightbox (ESC, ←, →)
+- [x] Add hover effects on gallery images
+- [x] Create mixed layout (regular, wide, tall, full-width variations)
 
 ### Phase 4: Polish & Deploy ✅ COMPLETED
 - [x] Test form functionality
 - [x] Verify all external links open in new tabs
 - [x] Hide pagination section
 - [x] Deploy to GitHub Pages
+- [x] Implement responsive design for Gallery (3/2/1 column layouts)
+- [x] Position vertical portraits across different columns for variety
+- [x] Add gallery.html link to navigation on index.html, about.html, experience.html
 - [ ] Test responsive design on mobile/tablet
 - [ ] Add meta tags for SEO
-- [ ] Configure custom domain (if desired)
 
 ## Content Guidelines
 
