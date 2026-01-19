@@ -17,6 +17,101 @@
     <noscript>
       <link rel="stylesheet" href="assets/css/noscript.css" />
     </noscript>
+    <style>
+      .lightbox-modal {
+        display: none;
+        position: fixed;
+        z-index: 10000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        cursor: pointer;
+      }
+      .lightbox-modal.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: fadeIn 0.3s ease-in-out;
+      }
+      .lightbox-content {
+        max-width: 90%;
+        max-height: 90vh;
+        object-fit: contain;
+        animation: zoomIn 0.3s ease-in-out;
+      }
+      .lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 40px;
+        color: #fff;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 10001;
+      }
+      .lightbox-close:hover {
+        color: #00d4ff;
+      }
+      .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #fff;
+        font-size: 50px;
+        font-weight: bold;
+        cursor: pointer;
+        padding: 20px;
+        user-select: none;
+        z-index: 10001;
+      }
+      .lightbox-nav:hover {
+        color: #00d4ff;
+      }
+      .lightbox-prev {
+        left: 20px;
+      }
+      .lightbox-next {
+        right: 20px;
+      }
+      .gallery-image {
+        cursor: pointer;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+      }
+      .gallery-image:hover {
+        transform: scale(1.02);
+        opacity: 0.9;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes zoomIn {
+        from {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      @media screen and (max-width: 736px) {
+        .lightbox-nav {
+          font-size: 30px;
+          padding: 10px;
+        }
+        .lightbox-close {
+          font-size: 30px;
+          right: 20px;
+        }
+      }
+    </style>
   </head>
 
   <body class="is-preload">
@@ -119,13 +214,14 @@
 
           <div class="box alt">
             <div class="row gtr-50 gtr-uniform">
-              <!-- Row 1 -->
-              <div class="col-4 col-12-small">
+              <!-- Row 1: Large + Small -->
+              <div class="col-8 col-12-small">
                 <span class="image fit">
                   <img
                     src="images/gallery/photo-01.webp"
                     alt="Photography by Raydi"
-                    style="object-fit: cover; height: 300px"
+                    class="gallery-image"
+                    style="object-fit: cover; height: 400px"
                   />
                 </span>
               </div>
@@ -134,27 +230,30 @@
                   <img
                     src="images/gallery/photo-02.webp"
                     alt="Photography by Raydi"
-                    style="object-fit: cover; height: 300px"
+                    class="gallery-image"
+                    style="object-fit: cover; height: 400px"
                   />
                 </span>
               </div>
+
+              <!-- Row 2-3: Square + Vertical Portrait + Square -->
               <div class="col-4 col-12-small">
                 <span class="image fit">
                   <img
                     src="images/gallery/photo-03.webp"
                     alt="Photography by Raydi"
-                    style="object-fit: cover; height: 300px"
+                    class="gallery-image"
+                    style="object-fit: cover; height: 280px"
                   />
                 </span>
               </div>
-
-              <!-- Row 2 -->
               <div class="col-4 col-12-small">
                 <span class="image fit">
                   <img
                     src="images/gallery/photo-04.webp"
                     alt="Photography by Raydi"
-                    style="object-fit: cover; height: 300px"
+                    class="gallery-image"
+                    style="object-fit: cover; height: 600px"
                   />
                 </span>
               </div>
@@ -163,64 +262,75 @@
                   <img
                     src="images/gallery/photo-05.webp"
                     alt="Photography by Raydi"
-                    style="object-fit: cover; height: 300px"
+                    class="gallery-image"
+                    style="object-fit: cover; height: 280px"
                   />
                 </span>
               </div>
+
+              <!-- Continuation of vertical layout -->
               <div class="col-4 col-12-small">
                 <span class="image fit">
                   <img
                     src="images/gallery/photo-06.webp"
                     alt="Photography by Raydi"
-                    style="object-fit: cover; height: 300px"
+                    class="gallery-image"
+                    style="object-fit: cover; height: 280px"
                   />
                 </span>
               </div>
-
-              <!-- Row 3 -->
               <div class="col-4 col-12-small">
                 <span class="image fit">
                   <img
                     src="images/gallery/photo-07.webp"
                     alt="Photography by Raydi"
-                    style="object-fit: cover; height: 300px"
-                  />
-                </span>
-              </div>
-              <div class="col-4 col-12-small">
-                <span class="image fit">
-                  <img
-                    src="images/gallery/photo-08.webp"
-                    alt="Photography by Raydi"
-                    style="object-fit: cover; height: 300px"
-                  />
-                </span>
-              </div>
-              <div class="col-4 col-12-small">
-                <span class="image fit">
-                  <img
-                    src="images/gallery/photo-09.webp"
-                    alt="Photography by Raydi"
-                    style="object-fit: cover; height: 300px"
+                    class="gallery-image"
+                    style="object-fit: cover; height: 280px"
                   />
                 </span>
               </div>
 
-              <!-- Row 4 -->
-              <div class="col-4 col-12-small">
+              <!-- Row: Full Width -->
+              <div class="col-12">
+                <span class="image fit">
+                  <img
+                    src="images/gallery/photo-08.webp"
+                    alt="Photography by Raydi"
+                    class="gallery-image"
+                    style="object-fit: cover; height: 450px"
+                  />
+                </span>
+              </div>
+
+              <!-- Row: Two Equal -->
+              <div class="col-6 col-12-small">
+                <span class="image fit">
+                  <img
+                    src="images/gallery/photo-09.webp"
+                    alt="Photography by Raydi"
+                    class="gallery-image"
+                    style="object-fit: cover; height: 350px"
+                  />
+                </span>
+              </div>
+              <div class="col-6 col-12-small">
                 <span class="image fit">
                   <img
                     src="images/gallery/photo-10.webp"
                     alt="Photography by Raydi"
-                    style="object-fit: cover; height: 300px"
+                    class="gallery-image"
+                    style="object-fit: cover; height: 350px"
                   />
                 </span>
               </div>
+
+              <!-- Row: Three Equal -->
               <div class="col-4 col-12-small">
                 <span class="image fit">
                   <img
                     src="images/gallery/photo-11.webp"
                     alt="Photography by Raydi"
+                    class="gallery-image"
                     style="object-fit: cover; height: 300px"
                   />
                 </span>
@@ -230,27 +340,30 @@
                   <img
                     src="images/gallery/photo-12.webp"
                     alt="Photography by Raydi"
+                    class="gallery-image"
                     style="object-fit: cover; height: 300px"
                   />
                 </span>
               </div>
-
-              <!-- Row 5 -->
               <div class="col-4 col-12-small">
                 <span class="image fit">
                   <img
                     src="images/gallery/photo-13.webp"
                     alt="Photography by Raydi"
+                    class="gallery-image"
                     style="object-fit: cover; height: 300px"
                   />
                 </span>
               </div>
-              <div class="col-4 col-12-small">
+
+              <!-- Row: Large + Small -->
+              <div class="col-8 col-12-small">
                 <span class="image fit">
                   <img
                     src="images/gallery/photo-14.webp"
                     alt="Photography by Raydi"
-                    style="object-fit: cover; height: 300px"
+                    class="gallery-image"
+                    style="object-fit: cover; height: 380px"
                   />
                 </span>
               </div>
@@ -259,18 +372,20 @@
                   <img
                     src="images/gallery/photo-15.webp"
                     alt="Photography by Raydi"
-                    style="object-fit: cover; height: 300px"
+                    class="gallery-image"
+                    style="object-fit: cover; height: 380px"
                   />
                 </span>
               </div>
 
-              <!-- Row 6 -->
+              <!-- Row: Vertical Portrait Section -->
               <div class="col-4 col-12-small">
                 <span class="image fit">
                   <img
                     src="images/gallery/photo-16.webp"
                     alt="Photography by Raydi"
-                    style="object-fit: cover; height: 300px"
+                    class="gallery-image"
+                    style="object-fit: cover; height: 260px"
                   />
                 </span>
               </div>
@@ -279,7 +394,8 @@
                   <img
                     src="images/gallery/photo-17.webp"
                     alt="Photography by Raydi"
-                    style="object-fit: cover; height: 300px"
+                    class="gallery-image"
+                    style="object-fit: cover; height: 560px"
                   />
                 </span>
               </div>
@@ -288,18 +404,20 @@
                   <img
                     src="images/gallery/photo-18.webp"
                     alt="Photography by Raydi"
-                    style="object-fit: cover; height: 300px"
+                    class="gallery-image"
+                    style="object-fit: cover; height: 260px"
                   />
                 </span>
               </div>
 
-              <!-- Row 7 -->
+              <!-- Continuation -->
               <div class="col-4 col-12-small">
                 <span class="image fit">
                   <img
                     src="images/gallery/photo-19.webp"
                     alt="Photography by Raydi"
-                    style="object-fit: cover; height: 300px"
+                    class="gallery-image"
+                    style="object-fit: cover; height: 260px"
                   />
                 </span>
               </div>
@@ -308,45 +426,52 @@
                   <img
                     src="images/gallery/photo-20.webp"
                     alt="Photography by Raydi"
-                    style="object-fit: cover; height: 300px"
-                  />
-                </span>
-              </div>
-              <div class="col-4 col-12-small">
-                <span class="image fit">
-                  <img
-                    src="images/gallery/photo-21.webp"
-                    alt="Photography by Raydi"
-                    style="object-fit: cover; height: 300px"
+                    class="gallery-image"
+                    style="object-fit: cover; height: 260px"
                   />
                 </span>
               </div>
 
-              <!-- Row 8 -->
-              <div class="col-4 col-12-small">
+              <!-- Row: Two Equal -->
+              <div class="col-6 col-12-small">
+                <span class="image fit">
+                  <img
+                    src="images/gallery/photo-21.webp"
+                    alt="Photography by Raydi"
+                    class="gallery-image"
+                    style="object-fit: cover; height: 340px"
+                  />
+                </span>
+              </div>
+              <div class="col-6 col-12-small">
                 <span class="image fit">
                   <img
                     src="images/gallery/photo-22.webp"
                     alt="Photography by Raydi"
-                    style="object-fit: cover; height: 300px"
+                    class="gallery-image"
+                    style="object-fit: cover; height: 340px"
                   />
                 </span>
               </div>
+
+              <!-- Row: Small + Large -->
               <div class="col-4 col-12-small">
                 <span class="image fit">
                   <img
                     src="images/gallery/photo-23.webp"
                     alt="Photography by Raydi"
-                    style="object-fit: cover; height: 300px"
+                    class="gallery-image"
+                    style="object-fit: cover; height: 390px"
                   />
                 </span>
               </div>
-              <div class="col-4 col-12-small">
+              <div class="col-8 col-12-small">
                 <span class="image fit">
                   <img
                     src="images/gallery/photo-24.webp"
                     alt="Photography by Raydi"
-                    style="object-fit: cover; height: 300px"
+                    class="gallery-image"
+                    style="object-fit: cover; height: 390px"
                   />
                 </span>
               </div>
@@ -372,6 +497,14 @@
             </li>
           </ul> -->
         </section>
+      </div>
+
+      <!-- Lightbox Modal -->
+      <div id="lightbox" class="lightbox-modal">
+        <span class="lightbox-close">&times;</span>
+        <span class="lightbox-nav lightbox-prev">&#10094;</span>
+        <img id="lightbox-img" class="lightbox-content" src="" alt="" />
+        <span class="lightbox-nav lightbox-next">&#10095;</span>
       </div>
 
       <!-- Footer -->
@@ -499,5 +632,56 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+      (function () {
+        const lightbox = document.getElementById("lightbox");
+        const lightboxImg = document.getElementById("lightbox-img");
+        const closeBtn = document.querySelector(".lightbox-close");
+        const prevBtn = document.querySelector(".lightbox-prev");
+        const nextBtn = document.querySelector(".lightbox-next");
+        const galleryImages = document.querySelectorAll(".gallery-image");
+        let currentIndex = 0;
+
+        galleryImages.forEach((img, index) => {
+          img.setAttribute("data-index", index);
+          img.addEventListener("click", function () {
+            currentIndex = parseInt(this.getAttribute("data-index"));
+            lightboxImg.src = this.src;
+            lightbox.classList.add("active");
+            document.body.style.overflow = "hidden";
+          });
+        });
+
+        function closeLightbox() {
+          lightbox.classList.remove("active");
+          document.body.style.overflow = "";
+        }
+
+        lightbox.addEventListener("click", function (e) {
+          if (e.target === lightbox || e.target === closeBtn) {
+            closeLightbox();
+          }
+        });
+
+        prevBtn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          currentIndex = currentIndex > 0 ? currentIndex - 1 : galleryImages.length - 1;
+          lightboxImg.src = galleryImages[currentIndex].src;
+        });
+
+        nextBtn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          currentIndex = currentIndex < galleryImages.length - 1 ? currentIndex + 1 : 0;
+          lightboxImg.src = galleryImages[currentIndex].src;
+        });
+
+        document.addEventListener("keydown", function (e) {
+          if (!lightbox.classList.contains("active")) return;
+          if (e.key === "Escape") closeLightbox();
+          else if (e.key === "ArrowLeft") prevBtn.click();
+          else if (e.key === "ArrowRight") nextBtn.click();
+        });
+      })();
+    </script>
   </body>
 </html>
