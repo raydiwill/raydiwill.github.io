@@ -83,6 +83,30 @@
         transform: scale(1.02);
         opacity: 0.9;
       }
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 300px;
+        gap: 1.5em;
+      }
+      .grid-item {
+        position: relative;
+        overflow: hidden;
+      }
+      .grid-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .grid-item-tall {
+        grid-row: span 2;
+      }
+      .grid-item-wide {
+        grid-column: span 2;
+      }
+      .grid-item-large {
+        grid-column: span 3;
+      }
       @keyframes fadeIn {
         from {
           opacity: 0;
@@ -101,6 +125,17 @@
           opacity: 1;
         }
       }
+      @media screen and (max-width: 980px) {
+        .gallery-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .grid-item-large {
+          grid-column: span 2;
+        }
+        .grid-item-wide {
+          grid-column: span 2;
+        }
+      }
       @media screen and (max-width: 736px) {
         .lightbox-nav {
           font-size: 30px;
@@ -109,6 +144,17 @@
         .lightbox-close {
           font-size: 30px;
           right: 20px;
+        }
+        .gallery-grid {
+          grid-template-columns: 1fr;
+          grid-auto-rows: 250px;
+        }
+        .grid-item-tall {
+          grid-row: span 1;
+        }
+        .grid-item-wide,
+        .grid-item-large {
+          grid-column: span 1;
         }
       }
     </style>
@@ -212,269 +258,185 @@
             Gallery
           </h2>
 
-          <div class="box alt">
-            <div class="row gtr-50 gtr-uniform">
-              <!-- Row 1: Large + Small -->
-              <div class="col-8 col-12-small">
-                <span class="image fit">
-                  <img
-                    src="images/gallery/photo-01.webp"
-                    alt="Photography by Raydi"
-                    class="gallery-image"
-                    style="object-fit: cover; height: 400px"
-                  />
-                </span>
-              </div>
-              <div class="col-4 col-12-small">
-                <span class="image fit">
-                  <img
-                    src="images/gallery/photo-02.webp"
-                    alt="Photography by Raydi"
-                    class="gallery-image"
-                    style="object-fit: cover; height: 400px"
-                  />
-                </span>
-              </div>
+          <div class="gallery-grid">
+            <!-- Row 1-2: Wide + Tall vertical -->
+            <div class="grid-item grid-item-wide">
+              <img
+                src="images/gallery/photo-01.webp"
+                alt="Photography by Raydi"
+                class="gallery-image"
+              />
+            </div>
+            <div class="grid-item grid-item-tall">
+              <img
+                src="images/gallery/photo-02.webp"
+                alt="Photography by Raydi"
+                class="gallery-image"
+              />
+            </div>
+            <div class="grid-item">
+              <img
+                src="images/gallery/photo-03.webp"
+                alt="Photography by Raydi"
+                class="gallery-image"
+              />
+            </div>
+            <div class="grid-item">
+              <img
+                src="images/gallery/photo-04.webp"
+                alt="Photography by Raydi"
+                class="gallery-image"
+              />
+            </div>
 
-              <!-- Row 2-3: Square + Vertical Portrait + Square -->
-              <div class="col-4 col-12-small">
-                <span class="image fit">
-                  <img
-                    src="images/gallery/photo-03.webp"
-                    alt="Photography by Raydi"
-                    class="gallery-image"
-                    style="object-fit: cover; height: 280px"
-                  />
-                </span>
-              </div>
-              <div class="col-4 col-12-small">
-                <span class="image fit">
-                  <img
-                    src="images/gallery/photo-04.webp"
-                    alt="Photography by Raydi"
-                    class="gallery-image"
-                    style="object-fit: cover; height: 600px"
-                  />
-                </span>
-              </div>
-              <div class="col-4 col-12-small">
-                <span class="image fit">
-                  <img
-                    src="images/gallery/photo-05.webp"
-                    alt="Photography by Raydi"
-                    class="gallery-image"
-                    style="object-fit: cover; height: 280px"
-                  />
-                </span>
-              </div>
+            <!-- Row 3-4: Regular + Tall vertical + Regular -->
+            <div class="grid-item">
+              <img
+                src="images/gallery/photo-05.webp"
+                alt="Photography by Raydi"
+                class="gallery-image"
+              />
+            </div>
+            <div class="grid-item grid-item-tall">
+              <img
+                src="images/gallery/photo-06.webp"
+                alt="Photography by Raydi"
+                class="gallery-image"
+              />
+            </div>
+            <div class="grid-item">
+              <img
+                src="images/gallery/photo-07.webp"
+                alt="Photography by Raydi"
+                class="gallery-image"
+              />
+            </div>
+            <div class="grid-item">
+              <img
+                src="images/gallery/photo-08.webp"
+                alt="Photography by Raydi"
+                class="gallery-image"
+              />
+            </div>
+            <div class="grid-item">
+              <img
+                src="images/gallery/photo-09.webp"
+                alt="Photography by Raydi"
+                class="gallery-image"
+              />
+            </div>
 
-              <!-- Continuation of vertical layout -->
-              <div class="col-4 col-12-small">
-                <span class="image fit">
-                  <img
-                    src="images/gallery/photo-06.webp"
-                    alt="Photography by Raydi"
-                    class="gallery-image"
-                    style="object-fit: cover; height: 280px"
-                  />
-                </span>
-              </div>
-              <div class="col-4 col-12-small">
-                <span class="image fit">
-                  <img
-                    src="images/gallery/photo-07.webp"
-                    alt="Photography by Raydi"
-                    class="gallery-image"
-                    style="object-fit: cover; height: 280px"
-                  />
-                </span>
-              </div>
+            <!-- Row 5: Full width -->
+            <div class="grid-item grid-item-large">
+              <img
+                src="images/gallery/photo-10.webp"
+                alt="Photography by Raydi"
+                class="gallery-image"
+              />
+            </div>
 
-              <!-- Row: Full Width -->
-              <div class="col-12">
-                <span class="image fit">
-                  <img
-                    src="images/gallery/photo-08.webp"
-                    alt="Photography by Raydi"
-                    class="gallery-image"
-                    style="object-fit: cover; height: 450px"
-                  />
-                </span>
-              </div>
+            <!-- Row 6-7: Regular grid -->
+            <div class="grid-item">
+              <img
+                src="images/gallery/photo-11.webp"
+                alt="Photography by Raydi"
+                class="gallery-image"
+              />
+            </div>
+            <div class="grid-item">
+              <img
+                src="images/gallery/photo-12.webp"
+                alt="Photography by Raydi"
+                class="gallery-image"
+              />
+            </div>
+            <div class="grid-item">
+              <img
+                src="images/gallery/photo-13.webp"
+                alt="Photography by Raydi"
+                class="gallery-image"
+              />
+            </div>
+            <div class="grid-item grid-item-wide">
+              <img
+                src="images/gallery/photo-14.webp"
+                alt="Photography by Raydi"
+                class="gallery-image"
+              />
+            </div>
+            <div class="grid-item">
+              <img
+                src="images/gallery/photo-15.webp"
+                alt="Photography by Raydi"
+                class="gallery-image"
+              />
+            </div>
 
-              <!-- Row: Two Equal -->
-              <div class="col-6 col-12-small">
-                <span class="image fit">
-                  <img
-                    src="images/gallery/photo-09.webp"
-                    alt="Photography by Raydi"
-                    class="gallery-image"
-                    style="object-fit: cover; height: 350px"
-                  />
-                </span>
-              </div>
-              <div class="col-6 col-12-small">
-                <span class="image fit">
-                  <img
-                    src="images/gallery/photo-10.webp"
-                    alt="Photography by Raydi"
-                    class="gallery-image"
-                    style="object-fit: cover; height: 350px"
-                  />
-                </span>
-              </div>
+            <!-- Row 8-9: Tall vertical in middle -->
+            <div class="grid-item">
+              <img
+                src="images/gallery/photo-16.webp"
+                alt="Photography by Raydi"
+                class="gallery-image"
+              />
+            </div>
+            <div class="grid-item grid-item-tall">
+              <img
+                src="images/gallery/photo-17.webp"
+                alt="Photography by Raydi"
+                class="gallery-image"
+              />
+            </div>
+            <div class="grid-item">
+              <img
+                src="images/gallery/photo-18.webp"
+                alt="Photography by Raydi"
+                class="gallery-image"
+              />
+            </div>
+            <div class="grid-item">
+              <img
+                src="images/gallery/photo-19.webp"
+                alt="Photography by Raydi"
+                class="gallery-image"
+              />
+            </div>
+            <div class="grid-item">
+              <img
+                src="images/gallery/photo-20.webp"
+                alt="Photography by Raydi"
+                class="gallery-image"
+              />
+            </div>
 
-              <!-- Row: Three Equal -->
-              <div class="col-4 col-12-small">
-                <span class="image fit">
-                  <img
-                    src="images/gallery/photo-11.webp"
-                    alt="Photography by Raydi"
-                    class="gallery-image"
-                    style="object-fit: cover; height: 300px"
-                  />
-                </span>
-              </div>
-              <div class="col-4 col-12-small">
-                <span class="image fit">
-                  <img
-                    src="images/gallery/photo-12.webp"
-                    alt="Photography by Raydi"
-                    class="gallery-image"
-                    style="object-fit: cover; height: 300px"
-                  />
-                </span>
-              </div>
-              <div class="col-4 col-12-small">
-                <span class="image fit">
-                  <img
-                    src="images/gallery/photo-13.webp"
-                    alt="Photography by Raydi"
-                    class="gallery-image"
-                    style="object-fit: cover; height: 300px"
-                  />
-                </span>
-              </div>
-
-              <!-- Row: Large + Small -->
-              <div class="col-8 col-12-small">
-                <span class="image fit">
-                  <img
-                    src="images/gallery/photo-14.webp"
-                    alt="Photography by Raydi"
-                    class="gallery-image"
-                    style="object-fit: cover; height: 380px"
-                  />
-                </span>
-              </div>
-              <div class="col-4 col-12-small">
-                <span class="image fit">
-                  <img
-                    src="images/gallery/photo-15.webp"
-                    alt="Photography by Raydi"
-                    class="gallery-image"
-                    style="object-fit: cover; height: 380px"
-                  />
-                </span>
-              </div>
-
-              <!-- Row: Vertical Portrait Section -->
-              <div class="col-4 col-12-small">
-                <span class="image fit">
-                  <img
-                    src="images/gallery/photo-16.webp"
-                    alt="Photography by Raydi"
-                    class="gallery-image"
-                    style="object-fit: cover; height: 260px"
-                  />
-                </span>
-              </div>
-              <div class="col-4 col-12-small">
-                <span class="image fit">
-                  <img
-                    src="images/gallery/photo-17.webp"
-                    alt="Photography by Raydi"
-                    class="gallery-image"
-                    style="object-fit: cover; height: 560px"
-                  />
-                </span>
-              </div>
-              <div class="col-4 col-12-small">
-                <span class="image fit">
-                  <img
-                    src="images/gallery/photo-18.webp"
-                    alt="Photography by Raydi"
-                    class="gallery-image"
-                    style="object-fit: cover; height: 260px"
-                  />
-                </span>
-              </div>
-
-              <!-- Continuation -->
-              <div class="col-4 col-12-small">
-                <span class="image fit">
-                  <img
-                    src="images/gallery/photo-19.webp"
-                    alt="Photography by Raydi"
-                    class="gallery-image"
-                    style="object-fit: cover; height: 260px"
-                  />
-                </span>
-              </div>
-              <div class="col-4 col-12-small">
-                <span class="image fit">
-                  <img
-                    src="images/gallery/photo-20.webp"
-                    alt="Photography by Raydi"
-                    class="gallery-image"
-                    style="object-fit: cover; height: 260px"
-                  />
-                </span>
-              </div>
-
-              <!-- Row: Two Equal -->
-              <div class="col-6 col-12-small">
-                <span class="image fit">
-                  <img
-                    src="images/gallery/photo-21.webp"
-                    alt="Photography by Raydi"
-                    class="gallery-image"
-                    style="object-fit: cover; height: 340px"
-                  />
-                </span>
-              </div>
-              <div class="col-6 col-12-small">
-                <span class="image fit">
-                  <img
-                    src="images/gallery/photo-22.webp"
-                    alt="Photography by Raydi"
-                    class="gallery-image"
-                    style="object-fit: cover; height: 340px"
-                  />
-                </span>
-              </div>
-
-              <!-- Row: Small + Large -->
-              <div class="col-4 col-12-small">
-                <span class="image fit">
-                  <img
-                    src="images/gallery/photo-23.webp"
-                    alt="Photography by Raydi"
-                    class="gallery-image"
-                    style="object-fit: cover; height: 390px"
-                  />
-                </span>
-              </div>
-              <div class="col-8 col-12-small">
-                <span class="image fit">
-                  <img
-                    src="images/gallery/photo-24.webp"
-                    alt="Photography by Raydi"
-                    class="gallery-image"
-                    style="object-fit: cover; height: 390px"
-                  />
-                </span>
-              </div>
+            <!-- Row 10-11: Final rows -->
+            <div class="grid-item">
+              <img
+                src="images/gallery/photo-21.webp"
+                alt="Photography by Raydi"
+                class="gallery-image"
+              />
+            </div>
+            <div class="grid-item">
+              <img
+                src="images/gallery/photo-22.webp"
+                alt="Photography by Raydi"
+                class="gallery-image"
+              />
+            </div>
+            <div class="grid-item">
+              <img
+                src="images/gallery/photo-23.webp"
+                alt="Photography by Raydi"
+                class="gallery-image"
+              />
+            </div>
+            <div class="grid-item grid-item-wide">
+              <img
+                src="images/gallery/photo-24.webp"
+                alt="Photography by Raydi"
+                class="gallery-image"
+              />
             </div>
           </div>
 
