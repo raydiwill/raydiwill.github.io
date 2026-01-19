@@ -1,5 +1,11 @@
 # Project Summary
 
+## Instructions for All Future Interactions
+- **Goal**: Help build a fully functional portfolio website
+- **Communication**: Every response must be clear and concise
+- **Approach**: Suggesting changes and let user review first before implementing it
+- **Format**: Follow CV-like structure with company context + role summary + achievements
+
 ## Goal
 Personal portfolio website to showcase professional experience, education, projects, and technical skills.
 
@@ -191,23 +197,49 @@ raydiwill.github.io/
    - Professional but personable tone
 
 10. **Experience Page (✅ Complete)**
-   - Work experience section with 3 positions:
-     - Analytics Engineer, Associate Data Analyst, Data Science Intern
-   - Education section with 2 degrees (M.Sc. and B.Sc.)
-   - Certifications organized by category (Cloud & ML)
-   - Technical skills grid (Languages, Frameworks, Data & Cloud)
-   - Visual enhancements: icons, boxes, blockquotes, alternate lists
+   - **Work Experience** (2 positions):
+     - **Analytics Engineer @ Adikteev** (June 2024 - Present)
+       - Company context paragraph explaining ad-tech industry
+       - Blockquote highlighting main focus
+       - Split into two roles: CDD (Dec 2024-Present) and Intern (June-Dec 2024)
+       - 8 achievement bullets covering data pipelines, automation, incident resolution
+     - **Associate Data Analyst @ Viettel Group** (April-June 2022)
+       - Company context explaining telecom/defense conglomerate
+       - Blockquote for role summary
+       - 3 bullets on ML evaluation, SQL analysis, churn prediction research
+   
+   - **Education** (2 degrees):
+     - **M.Sc. Computer Science** - EPITA, Paris (March 2023 - Dec 2024)
+       - GPA: 16.11/20
+       - Specialization: Data Science & Analytics
+       - 2 capstone projects with GitHub links (telecom churn, bank churn)
+     - **B.Sc. Cyber Security** - USTH, Hanoi (August 2018 - Nov 2021)
+       - GPA: 15.32
+       - Graduated with Distinction
+       - Merit scholarship, active student recognition
+       - Thesis on OSINT-based cyber threat intelligence
+   
+   - **Certifications** (6 total, organized in 2 columns):
+     - **Data Analytics**: Google Data Analytics Professional (Coursera), Data Analyst Associate (DataCamp), Data Analyst with R (DataCamp)
+     - **Data Science**: Data Scientist Professional (DataCamp), Data Scientist Associate (DataCamp), Learn R Course (Codecademy)
+   
+   - **Technical Skills** (3-column grid):
+     - Languages: Python, SQL, JavaScript, R, C/C++, Java, HTML/CSS
+     - Frameworks & Tools: Airflow, FastAPI, Docker, MLFlow, Scikit-learn, Pandas/Polars, Grafana, Streamlit, XGBoost/Catboost/LightGBM
+     - Data & Cloud: AWS, GCP, PostgreSQL, MongoDB, Redshift, Trino, Apache Hive, Snowflake
+   
+   - **Design Pattern**:
+     - Company context paragraph (industry + scale)
+     - Blockquote for role summary/main focus
+     - Bulleted achievements with metrics
+     - Consistent cyan accent borders and Font Awesome icons
 
 ### Pending Tasks ⏳
-- [ ] Add project detail pages (currently links go to GitHub repos)
-- [ ] Update page meta tags (description, og:image for social sharing)
 - [ ] Test mobile responsiveness thoroughly
+- [ ] Add page meta tags for SEO (description, og:image for social sharing)
 - [ ] Add Google Analytics (optional)
-- [ ] Consider adding blog section
-- [ ] Add more portfolio projects (currently 4 showcasedtion, og:image for social sharing)
-- [ ] Consider adding more projects (currently 4 showcased)
-- [ ] Test mobile responsiveness thoroughly
-- [ ] Add Google Analytics (optional)
+- [ ] Add project detail pages (optional - currently links go to GitHub repos)
+- [ ] Consider adding blog section (optional)
 
 ## Implementation Roadmap
 
@@ -227,17 +259,11 @@ raydiwill.github.io/
   - Stock Price Prediction (MLOps)
   - Telecom Churn Prediction (Deep Learning) with security attributes
 - [x] Hide pagination section
-- [x] Deploy to GitHub Pages
-- [x] Add rel="noopener noreferrer" to all external links
-- [x] Improve image alt text for accessibility
-- [x] Format all content for readability (75 chars per line)tomation)
+- [x] Deploy to GitHub Pages (Stock Prediction, Telecom Churn, Bank Churn, LinkedIn Scraper)
 - [x] Generate/add project images (stock.webp, telecom.webp, bank.webp, bot.webp)
 - [x] Add professional hero image (prof_hero.webp)
-- [ ] Complete About page content (placeholder remains)
-
-### Phase 3: Configuration ✅ COMPLETED
-- [x] Add favicon (images/favicon.ico)
-- [x] Configure contact form with Formspree
+- [x] Complete About page content with personal story
+- [x] Complete Experience page with actual work history and education
 - [x] Implement AJAX form submission (no redirect)
 - [x] Add success/error notifications
 - [x] Update contact information (address, phone, email)
@@ -293,12 +319,14 @@ raydiwill.github.io/
 - Project cards: Direct GitHub repo links
 - Resume: Hosted on raydiwill.github.io/resume/resume.pdf
 - Contact form: Formspree endpoint active
-
-### Technical Improvements Made
-1. **Form UX Enhancement**
-   - AJAX submission prevents page redirect
-   - Inline success/error notifications (green/red)
-   - Auto-hide messages after 5 seconds
+CV-like structure: company context → role summary → achievements
+   - Visual hierarchy with Font Awesome icons
+   - Boxed layout for each entry with cyan accent borders
+   - Blockquotes highlighting role summaries/main focus
+   - Alternate lists for cleaner bullet points
+   - Grid layouts for certifications and skills
+   - Real data from actual work experience at Adikteev and Viettel
+   - Actual certifications from Google/DataCamp/Codecademy
    - Button state management (disabled while sending)
 
 2. **Navigation Fixes**
