@@ -27,8 +27,20 @@
     <meta name="twitter:description" content="Building reliable data pipelines and ML services in Adtech." />
     <meta name="twitter:image" content="https://raydiwill.github.io/images/prof_hero.webp" />
     
-    <link rel="stylesheet" href="assets/css/main.css" />
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://formspree.io">
+    
+    <!-- DNS prefetch for social media -->
+    <link rel="dns-prefetch" href="https://github.com">
+    <link rel="dns-prefetch" href="https://linkedin.com">
+    
+    <!-- Preload purged CSS for faster loading -->
+    <link rel="preload" href="assets/css/main.purged.css" as="style">
+    <link rel="stylesheet" href="assets/css/main.purged.css" media="print" onload="this.media='all'">
     <noscript>
+      <link rel="stylesheet" href="assets/css/main.purged.css" />
       <link rel="stylesheet" href="assets/css/noscript.css" />
     </noscript>
   </head>
@@ -177,6 +189,7 @@
                 width="640"
                 height="360"
                 loading="lazy"
+                style="object-fit: cover; aspect-ratio: 16/9;"
             /></a>
             <p>
               End-to-end MLOps platform that will predict daily stock movements.
@@ -213,6 +226,7 @@
                 width="640"
                 height="360"
                 loading="lazy"
+                style="object-fit: cover; aspect-ratio: 16/9;"
             /></a>
             <p>
               Develop an MVP from state-of-the-art deep learning model for churn
@@ -250,6 +264,7 @@
                 width="640"
                 height="360"
                 loading="lazy"
+                style="object-fit: cover; aspect-ratio: 16/9;"
             /></a>
             <p>
               Web application utilizing machine learning for bank customer churn prediction.
@@ -286,6 +301,7 @@
                 width="640"
                 height="360"
                 loading="lazy"
+                style="object-fit: cover; aspect-ratio: 16/9;"
             /></a>
             <p>
               Automation bot for scraping LinkedIn job listings.
@@ -464,13 +480,13 @@
       </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+    <!-- Scripts (deferred for better performance) -->
+    <script src="assets/js/jquery.min.js" defer></script>
+    <script src="assets/js/jquery.scrollex.min.js" defer></script>
+    <script src="assets/js/jquery.scrolly.min.js" defer></script>
+    <script src="assets/js/browser.min.js" defer></script>
+    <script src="assets/js/breakpoints.min.js" defer></script>
+    <script src="assets/js/util.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
   </body>
 </html>
