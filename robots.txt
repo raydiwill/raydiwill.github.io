@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Disallow template reference files
+Disallow: /elements.html
+Disallow: /original_backup/
+
+# Allow important pages
+Allow: /index.html
+Allow: /about.html
+Allow: /experience.html
+Allow: /gallery.html
+
+# Sitemap location
+Sitemap: https://raydiwill.github.io/sitemap.xml

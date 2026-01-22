@@ -1,9 +1,4 @@
-<!doctype html>
-<!--
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <title>Experience - Raydi TRAN</title>
@@ -11,9 +6,28 @@
     <meta charset="utf-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1, user-scalable=no"
+      content="width=device-width, initial-scale=1"
     />
-    <link rel="stylesheet" href="assets/css/main.css" />
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Professional experience of Raydi TRAN - Analytics Engineer at Adikteev, EPITA graduate. Work history, education, certifications, and technical skills in data engineering and MLOps." />
+    <meta name="keywords" content="Work Experience, Analytics Engineer, Adikteev, Viettel Group, EPITA, Data Engineering, MLOps, Python, Airflow, SQL" />
+    <meta name="author" content="Khanh Duong TRAN (Raydi)" />
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:url" content="https://raydiwill.github.io/experience.html" />
+    <meta property="og:title" content="Professional Experience - Raydi TRAN" />
+    <meta property="og:description" content="Analytics Engineer with expertise in ELT pipelines, ML deployment, and production data systems. Experience at Adikteev and Viettel Group." />
+    <meta property="og:image" content="https://raydiwill.github.io/images/prof_hero.webp" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Raydi TRAN - Professional Experience" />
+    <meta name="twitter:description" content="1+ YOE building production-ready data pipelines and ML services in Adtech." />
+    <meta name="twitter:image" content="https://raydiwill.github.io/images/prof_hero.webp" />
+
+    <link rel="stylesheet" href="assets/css/main.purged.css" />
     <noscript>
       <link rel="stylesheet" href="assets/css/noscript.css" />
     </noscript>
@@ -34,20 +48,21 @@
       </header>
 
       <!-- Nav -->
-      <nav id="nav">
+      <nav id="nav" aria-label="Main navigation">
         <ul class="links">
-          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html" aria-current="page">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li class="active"><a href="experience.html">Experience</a></li>
           <li><a href="gallery.html">Gallery</a></li>
         </ul>
-        <ul class="icons">
+        <ul class="icons" aria-label="Social media links">
           <li>
             <a
               href="https://github.com/raydiwill"
               class="icon brands fa-github"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Visit Raydi's GitHub profile"
             >
               <span class="label">GitHub</span>
             </a>
@@ -58,6 +73,7 @@
               class="icon brands fa-linkedin"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Connect with Raydi on LinkedIn"
             >
               <span class="label">LinkedIn</span>
             </a>
@@ -68,6 +84,7 @@
               class="icon brands fa-medium"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Read Raydi's articles on Medium"
             >
               <span class="label">Medium</span>
             </a>
@@ -78,6 +95,7 @@
               class="icon brands fa-instagram"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Follow Raydi on Instagram"
             >
               <span class="label">Instagram</span>
             </a>
@@ -437,15 +455,31 @@
             method="POST"
             action="https://formspree.io/f/xnjjngzg"
             id="contact-form"
+            aria-labelledby="contact-form-heading"
           >
+            <h2 id="contact-form-heading" class="sr-only">Contact Form</h2>
             <div class="fields">
               <div class="field">
                 <label for="name">Name</label>
-                <input type="text" name="name" id="name" required />
+                <input 
+                  type="text" 
+                  name="name" 
+                  id="name" 
+                  required 
+                  aria-required="true"
+                  placeholder="Your full name"
+                />
               </div>
               <div class="field">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" required />
+                <input 
+                  type="email" 
+                  name="email" 
+                  id="email" 
+                  required 
+                  aria-required="true"
+                  placeholder="your.email@example.com"
+                />
               </div>
               <div class="field">
                 <label for="message">Message</label>
@@ -454,14 +488,18 @@
                   id="message"
                   rows="3"
                   required
+                  aria-required="true"
+                  placeholder="Your message here..."
                 ></textarea>
               </div>
             </div>
             <ul class="actions">
-              <li><input type="submit" value="Send Message" /></li>
+              <li><input type="submit" value="Send Message" aria-label="Submit contact form" /></li>
             </ul>
             <p
               id="form-status"
+              role="status"
+              aria-live="polite"
               style="
                 margin-top: 1em;
                 padding: 1em;
@@ -478,11 +516,11 @@
           </section>
           <section>
             <h3>Phone</h3>
-            <p><a href="#">(+33) 6 62 48 81 52</a></p>
+            <p><a href="tel:+33662488152" aria-label="Call Raydi at +33 6 62 48 81 52">(+33) 6 62 48 81 52</a></p>
           </section>
           <section>
             <h3>Email</h3>
-            <p><a href="#">duong.tranhn1102@gmail.com</a></p>
+            <p><a href="mailto:duong.tranhn1102@gmail.com" aria-label="Email Raydi at duong.tranhn1102@gmail.com">duong.tranhn1102@gmail.com</a></p>
           </section>
           <section>
             <h3>Social</h3>
@@ -493,6 +531,7 @@
                   class="icon brands alt fa-linkedin"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Connect with Raydi on LinkedIn"
                   ><span class="label">LinkedIn</span></a
                 >
               </li>
@@ -502,6 +541,7 @@
                   class="icon brands alt fa-github"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Visit Raydi's GitHub profile"
                   ><span class="label">GitHub</span></a
                 >
               </li>
@@ -511,6 +551,7 @@
                   class="icon brands fa-medium"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Read Raydi's articles on Medium"
                 >
                   <span class="label">Medium</span>
                 </a>
@@ -521,6 +562,7 @@
                   class="icon brands alt fa-facebook-f"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Follow Raydi on Facebook"
                   ><span class="label">Facebook</span></a
                 >
               </li>
@@ -530,6 +572,7 @@
                   class="icon brands alt fa-instagram"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Follow Raydi on Instagram"
                   ><span class="label">Instagram</span></a
                 >
               </li>
@@ -548,12 +591,12 @@
     </div>
 
     <!-- Scripts -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery.scrollex.min.js"></script>
-    <script src="assets/js/jquery.scrolly.min.js"></script>
-    <script src="assets/js/browser.min.js"></script>
-    <script src="assets/js/breakpoints.min.js"></script>
-    <script src="assets/js/util.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/jquery.min.js" defer></script>
+    <script src="assets/js/jquery.scrollex.min.js" defer></script>
+    <script src="assets/js/jquery.scrolly.min.js" defer></script>
+    <script src="assets/js/browser.min.js" defer></script>
+    <script src="assets/js/breakpoints.min.js" defer></script>
+    <script src="assets/js/util.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
   </body>
 </html>
