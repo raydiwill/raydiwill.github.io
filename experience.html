@@ -456,15 +456,31 @@
             method="POST"
             action="https://formspree.io/f/xnjjngzg"
             id="contact-form"
+            aria-labelledby="contact-form-heading"
           >
+            <h2 id="contact-form-heading" class="sr-only">Contact Form</h2>
             <div class="fields">
               <div class="field">
                 <label for="name">Name</label>
-                <input type="text" name="name" id="name" required />
+                <input 
+                  type="text" 
+                  name="name" 
+                  id="name" 
+                  required 
+                  aria-required="true"
+                  placeholder="Your full name"
+                />
               </div>
               <div class="field">
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" required />
+                <input 
+                  type="email" 
+                  name="email" 
+                  id="email" 
+                  required 
+                  aria-required="true"
+                  placeholder="your.email@example.com"
+                />
               </div>
               <div class="field">
                 <label for="message">Message</label>
@@ -473,14 +489,18 @@
                   id="message"
                   rows="3"
                   required
+                  aria-required="true"
+                  placeholder="Your message here..."
                 ></textarea>
               </div>
             </div>
             <ul class="actions">
-              <li><input type="submit" value="Send Message" /></li>
+              <li><input type="submit" value="Send Message" aria-label="Submit contact form" /></li>
             </ul>
             <p
               id="form-status"
+              role="status"
+              aria-live="polite"
               style="
                 margin-top: 1em;
                 padding: 1em;
