@@ -1,0 +1,36 @@
+{
+  "name": "raydiwill.github.io",
+  "version": "1.0.0",
+  "description": "My portfolio website\r ====",
+  "main": "playwright.config.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "http-server -p 5500",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
+    "test:debug": "playwright test --debug",
+    "test:report": "playwright show-report",
+    "validate:html": "html-validate '*.html'",
+    "validate:all": "npm run validate:html && npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raydiwill/raydiwill.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/raydiwill/raydiwill.github.io/issues"
+  },
+  "homepage": "https://github.com/raydiwill/raydiwill.github.io#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "html-validate": "^10.6.0",
+    "http-server": "^14.1.1"
+  }
+}
