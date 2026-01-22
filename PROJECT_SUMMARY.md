@@ -30,7 +30,7 @@ raydiwill.github.io/
 ├── robots.txt              # Search engine crawler instructions
 ├── sitemap.xml             # XML sitemap for SEO
 ├── assets/
-│   ├── css/               # Pre-compiled stylesheets (main.css, noscript.css)
+│   ├── css/               # Purged stylesheets (main.purged.css, noscript.css)
 │   ├── js/                # Minified JavaScript libraries and scripts
 │   ├── sass/              # SCSS source files (for customization)
 │   └── webfonts/          # Font Awesome web fonts
@@ -41,8 +41,7 @@ raydiwill.github.io/
 ├── tests/                 # Playwright test suite
 │   ├── home.spec.js       # Homepage E2E tests (26 passing)
 │   └── README.md          # Testing documentation
-├── playwright.config.js   # Playwright configuration
-└── original_backup/       # Template backups
+└── playwright.config.js   # Playwright configuration
 ```
 
 ## Key Features
@@ -55,7 +54,7 @@ raydiwill.github.io/
 7. **Professional Branding**: Custom favicon, resume link, personalized bio
 8. **SEO Optimized**: Meta tags, Open Graph, Twitter Cards, sitemap.xml, robots.txt
 9. **Accessibility**: WCAG 2.1 Level AA compliant (96/100 Lighthouse score)
-10. **Performance**: Optimized images, lazy loading, deferred scripts (90+ Lighthouse score)
+10. **Performance**: Optimized images, lazy loading, deferred scripts, purged CSS (75/100 Lighthouse score)
 11. **E2E Testing**: Comprehensive Playwright test coverage (26 passing tests)
 
 ## Design System
@@ -68,7 +67,7 @@ raydiwill.github.io/
 
 ## Optimization Achievements
 
-### SEO Optimization ✅ COMPLETED
+### SEO Optimization ✅ COMPLETED (Score: 100/100)
 1. **Meta Tags (All Pages)**
    - Descriptive meta descriptions for each page
    - Open Graph tags for social media sharing (Facebook, LinkedIn)
@@ -123,6 +122,30 @@ raydiwill.github.io/
    - Proper heading hierarchy (no duplicate H1 tags)
    - Semantic HTML5 elements throughout
 
+### Performance Optimization ✅ IN PROGRESS (Score: 75/100)
+1. **CSS Optimization**
+   - ✅ PurgeCSS implemented - removed unused CSS
+   - ✅ Main stylesheet reduced from 150KB to purged version
+   - ⏳ Additional minification possible with cssnano
+
+2. **JavaScript Optimization**
+   - ✅ All scripts deferred for non-blocking load
+   - ⏳ Unused JavaScript still present (294 KiB potential savings)
+   - ⏳ Tree-shaking or custom jQuery build recommended
+
+3. **Image Optimization**
+   - ✅ All images use WebP format
+   - ✅ Explicit width/height attributes (zero CLS)
+   - ✅ Lazy loading for below-fold images
+   - ⏳ Background image optimization needed (largest issue)
+   - ⏳ Responsive srcset for hero image recommended
+
+4. **Resource Loading**
+   - ✅ CSS preloaded and deferred
+   - ✅ DNS prefetch for external domains
+   - ⏳ Render-blocking resources still present
+   - ⏳ Critical CSS inlining recommended
+
 ### Testing Infrastructure ✅ COMPLETED
 1. **Playwright E2E Tests (26 Passing)**
    - **Basic Page Load Tests** (3 tests)
@@ -173,15 +196,23 @@ raydiwill.github.io/
    npm test                 # Run all tests
    npm run test:headed      # Run with browser visible
    npm run test:debug       # Debug mode with inspector
+   npm run test:report      # View latest test report
    ```
 
-## Lighthouse Scores (Before → After Optimization)
+## Lighthouse Scores (Current State)
 
-| Metric          | Before | After | Improvement |
-|-----------------|--------|-------|-------------|
-| Accessibility   | 85     | 96    | +11 points  |
-| Best Practices  | 92     | 100   | +8 points   |
-| SEO             | 80     | 100   | +20 points  |
+| Metric          | Before Optimization | After Optimization | Target | Status |
+|-----------------|--------------------|--------------------|--------|--------|
+| Performance     | 74                 | 75                 | 90+    | ⏳ In Progress |
+| Accessibility   | 85                 | 96                 | 90+    | ✅ Completed |
+| Best Practices  | 92                 | 100                | 90+    | ✅ Completed |
+| SEO             | 80                 | 100                | 90+    | ✅ Completed |
+
+### Performance Bottlenecks Identified
+1. **Background Image (bg.webp)** - 13+ MB unoptimized (Largest issue)
+2. **Unused JavaScript** - 294 KiB wasted
+3. **Render-blocking resources** - 490ms delay
+4. **Hero Image** - Needs responsive srcset
 
 ## Customization
 SCSS source files located in `assets/sass/` for theming:
@@ -199,8 +230,10 @@ Requires SASS compiler if modifications needed.
 - **Hosting**: GitHub Pages
 - **Branch**: master
 - **Last Updated**: January 2026
+- **Performance**: 75/100 Lighthouse score
 - **Accessibility**: 96/100 Lighthouse score
 - **SEO**: 100/100 Lighthouse score
+- **Best Practices**: 100/100 Lighthouse score
 
 ### Repository Structure
 ```
@@ -209,55 +242,68 @@ raydiwill.github.io/
 ├── about.html              # Personal story & gallery (✅ Optimized)
 ├── experience.html         # Professional timeline (✅ Optimized)
 ├── gallery.html            # Photography showcase (✅ Optimized)
-├── elements.html           # UI reference (kept for dev)
-├── robots.txt              # SEO crawler config (✅ New)
-├── sitemap.xml             # XML sitemap (✅ New)
+├── elements.html           # UI reference (⚠️ Optional - can be removed)
+├── robots.txt              # SEO crawler config (✅ Active)
+├── sitemap.xml             # XML sitemap (✅ Active)
+├── .gitignore              # Git ignore rules
+├── package.json            # NPM dependencies
+├── playwright.config.js    # Test configuration
+├── purgecss.config.js      # CSS purge configuration
 ├── assets/
-│   ├── css/               # Pre-compiled stylesheets
-│   ├── js/                # jQuery libraries + utilities
-│   └── webfonts/          # Font Awesome fonts
-├── images/                # Project images + favicon
+│   ├── css/
+│   │   ├── main.purged.css     # ✅ Production CSS (purged)
+│   │   ├── noscript.css        # ✅ Fallback styles
+│   │   └── fontawesome-all.min.css  # ✅ Icon fonts
+│   ├── js/                 # ✅ Deferred scripts
+│   ├── sass/               # ⚠️ Optional - can be removed if no future customization
+│   └── webfonts/           # ✅ Font Awesome fonts
+├── images/
 │   ├── favicon.ico
-│   ├── prof_hero.webp
-│   ├── projects/          # Project screenshots
-│   │   ├── stock.webp
-│   │   ├── telecom.webp
-│   │   ├── bank.webp
-│   │   └── bot.webp
-│   ├── me/                # Personal photos (300x450, lazy load)
-│   └── gallery/           # Photography gallery (lazy load + dimensions)
-├── tests/                 # Playwright test suite (26 passing)
-│   ├── home.spec.js       # Comprehensive E2E tests
-│   └── README.md          # Testing documentation
-└── original_backup/       # Template backups
+│   ├── prof_hero.webp      # ⏳ Needs responsive srcset
+│   ├── bg.webp             # ⚠️ Needs optimization (13+ MB)
+│   ├── overlay.webp
+│   ├── projects/           # ✅ All optimized WebP
+│   ├── me/                 # ✅ Lazy loaded (300x450)
+│   └── gallery/            # ✅ Lazy loaded with dimensions
+├── tests/                  # ✅ 26 passing tests
+└── .github/
+    └── workflows/
+        └── deploy.yml      # ✅ CI/CD pipeline
 ```
 
-### Content Enhancement Opportunities (Optional)
-1. **Blog Section**
-   - Add technical articles about ML/data engineering
-   - Share project case studies
-   - Write tutorials on MLOps/Airflow
+### Recommended Cleanup
+**Safe to Delete:**
+- `test-results/` - Test cache (regenerates on test run)
+- `playwright-report/` - Test reports (regenerates on test run)
 
-2. **Project Detail Pages**
-   - Expand project cards into full case studies
-   - Add architecture diagrams
-   - Include performance metrics and results
+**Optional to Delete:**
+- `elements.html` - Development reference page (blocked by robots.txt)
+- `assets/sass/` - SCSS sources (only if you won't customize styles)
 
-3. **Analytics Integration**
-   - Google Analytics or Plausible for visitor tracking
-   - Form submission tracking
-   - Project link click monitoring
-   - A/B testing for CTA optimization
+**Verify Before Deleting:**
+- Check that all HTML files use `main.purged.css` (not `main.css`)
+- Run `grep -r "main\.css" *.html` to confirm
+
+### Cleanup Script
+```bash
+#!/bin/bash
+# Safe cleanup - removes test cache and reports
+rm -rf test-results/
+rm -rf playwright-report/
+
+echo "✅ Test cache cleaned"
+echo "⚠️  To remove elements.html and SASS sources, do so manually"
+```
 
 ## Current State
-**Status**: Live, deployed, and optimized on GitHub Pages
+**Status**: Live, deployed, and partially optimized on GitHub Pages
 
 ### Completed Features ✅
 1. **Personal Branding**
    - Custom page title: "Raydi TRAN"
    - Favicon configured (images/favicon.ico)
    - Intro section with personalized tagline
-   - Professional hero image (prof_hero.webp) with optimized loading
+   - Professional hero image (prof_hero.webp - needs optimization)
 
 2. **Navigation & Links**
    - Social media icons (5 platforms):
@@ -314,13 +360,14 @@ raydiwill.github.io/
    - Social links (5 platforms): LinkedIn, GitHub, Medium, Facebook, Instagram
    - All icon links have accessible names
 
-7. **Images & Assets (Partial Optimized)**
-   - Custom project images (4 webp files with explicit dimensions)
-   - Professional hero image (1600x1067, eager loading)
-   - Favicon (favicon.ico)
-   - All images have descriptive alt text
-   - Lazy loading for below-fold images
-   - Zero Cumulative Layout Shift (CLS: 0)
+7. **Images & Assets (Partially Optimized)**
+   - Custom project images (4 webp files with explicit dimensions) ✅
+   - Professional hero image (1600x1067, eager loading) ⏳ Needs srcset
+   - Background image (bg.webp) ⚠️ Needs optimization (13+ MB)
+   - Favicon (favicon.ico) ✅
+   - All images have descriptive alt text ✅
+   - Lazy loading for below-fold images ✅
+   - Zero Cumulative Layout Shift (CLS: 0) ✅
 
 8. **Design Customizations**
    - Inline font-size adjustment for main headline (2.5rem)
@@ -369,7 +416,7 @@ raydiwill.github.io/
    
    - SEO optimized with professional meta tags
 
-11. **Gallery Page (✅ Complete & Partial Optimized)**
+11. **Gallery Page (✅ Complete & Optimized)**
    - **Layout**: CSS Grid with creative mixed formats
      - 3-column grid (desktop), 2-column (tablet), 1-column (mobile)
      - Base row height: 300px
@@ -395,7 +442,7 @@ raydiwill.github.io/
    
    - SEO optimized with photography-specific meta tags
 
-12. **SEO Infrastructure (✅ Complete)**
+12. **SEO Infrastructure (✅ Complete - Score: 100/100)**
    - Meta descriptions for all pages
    - Open Graph tags for social sharing
    - Twitter Card meta tags
@@ -427,11 +474,38 @@ raydiwill.github.io/
    - CI/CD ready configuration
    - Test reports and debugging tools
 
+15. **Performance Optimization (⏳ In Progress - Score: 75/100)**
+   - ✅ CSS purged with PurgeCSS
+   - ✅ JavaScript deferred
+   - ✅ Images use WebP format
+   - ✅ Lazy loading implemented
+   - ⏳ Background image needs optimization (13+ MB → target < 500KB)
+   - ⏳ Hero image needs responsive srcset
+   - ⏳ Unused JavaScript should be removed (294 KiB)
+   - ⏳ CSS minification with cssnano recommended
+
 ### Pending Tasks ⏳
-- [ ] Add Google Analytics (optional)
-- [ ] Add project detail pages (optional - currently links go to GitHub repos)
-- [ ] Consider adding blog section (optional)
-- [ ] Create test suite for About, Experience, Gallery pages (optional)
+
+**High Priority (Performance - Target: 90+ score):**
+- [ ] Optimize background image (bg.webp) from 13+ MB to < 500KB
+- [ ] Add responsive srcset to hero image (prof_hero.webp)
+- [ ] Minify JavaScript files with Terser
+- [ ] Inline critical CSS for above-fold content
+- [ ] Consider replacing jQuery with vanilla JS or custom build
+
+**Medium Priority (Code Cleanup):**
+- [ ] Verify all HTML uses main.purged.css (not main.css)
+- [ ] Remove test-results/ and playwright-report/ from repo
+- [ ] Decide whether to keep elements.html (currently blocked by robots.txt)
+- [ ] Decide whether to keep assets/sass/ (only needed for future customization)
+
+**Low Priority (Optional Enhancements):**
+- [ ] Add Google Analytics for visitor tracking
+- [ ] Add project detail pages (currently links go to GitHub repos)
+- [ ] Consider adding blog section
+- [ ] Create test suite for About, Experience, Gallery pages
+- [ ] Implement visual regression testing
+- [ ] Add performance monitoring
 
 ## How to Add More Images to Gallery
 
@@ -592,7 +666,7 @@ The grid will automatically arrange these images, fill any gaps, and include the
 - [x] Add hover effects on gallery images
 - [x] Create mixed layout (regular, wide, tall, full-width variations)
 
-### Phase 4: SEO Optimization ✅ COMPLETED
+### Phase 4: SEO Optimization ✅ COMPLETED (Score: 100/100)
 - [x] Add meta descriptions to all pages
 - [x] Add Open Graph tags for social media sharing
 - [x] Add Twitter Card meta tags
@@ -618,7 +692,18 @@ The grid will automatically arrange these images, fill any gaps, and include the
 - [x] Add CI/CD support for automated testing
 - [x] Create test documentation
 
-### Phase 7: Polish & Deploy ✅ COMPLETED
+### Phase 7: Performance Optimization ⏳ IN PROGRESS (Score: 75/100 → Target: 90+)
+- [x] Purge unused CSS with PurgeCSS
+- [x] Defer JavaScript loading
+- [x] Add lazy loading to images
+- [x] Preload critical resources
+- [ ] Optimize background image (bg.webp) - **CRITICAL**
+- [ ] Add responsive srcset to hero image
+- [ ] Minify JavaScript with Terser
+- [ ] Inline critical CSS
+- [ ] Remove unused JavaScript
+
+### Phase 8: Polish & Deploy ✅ COMPLETED
 - [x] Test form functionality
 - [x] Verify all external links open in new tabs
 - [x] Hide pagination section
@@ -626,8 +711,16 @@ The grid will automatically arrange these images, fill any gaps, and include the
 - [x] Implement responsive design for Gallery (3/2/1 column layouts)
 - [x] Position vertical portraits across different columns for variety
 - [x] Add gallery.html link to navigation on all pages
-- [] Verify Lighthouse scores (Accessibility: 96, SEO: 100)
+- [x] Verify Lighthouse scores (Accessibility: 96, SEO: 100, Best Practices: 100)
 - [x] Test responsive design on mobile/tablet viewports
+
+### Phase 9: Cleanup & Maintenance ⏳ NEXT STEP
+- [ ] Remove test cache and reports from repository
+- [ ] Verify CSS references (main.purged.css vs main.css)
+- [ ] Decide on keeping elements.html
+- [ ] Decide on keeping SASS sources
+- [ ] Update documentation with latest changes
+- [ ] Create maintenance guidelines
 
 ## Content Guidelines
 
@@ -637,12 +730,13 @@ The grid will automatically arrange these images, fill any gaps, and include the
 - Include GitHub repo links
 - Each project has dedicated call-to-action button with unique aria-label
 
-### Image Requirements ✅ Completed & Optimized
-- Hero image: prof_hero.webp (1600x1067, eager loading)
-- Project images: stock.webp, telecom.webp, bank.webp, bot.webp (640x360, lazy loading)
-- All images optimized for web (WebP format)
-- Descriptive alt text for accessibility
-- Consistent dark theme with cyan accents
+### Image Requirements ⚠️ Partially Optimized
+- Hero image: prof_hero.webp (1600x1067, eager loading) - **Needs responsive srcset**
+- Background: bg.webp - **Needs optimization (13+ MB → < 500KB)**
+- Project images: stock.webp, telecom.webp, bank.webp, bot.webp (640x360, lazy loading) ✅
+- All images optimized for web (WebP format) ✅
+- Descriptive alt text for accessibility ✅
+- Consistent dark theme with cyan accents ✅
 
 ### Links Configuration ✅ Completed
 - Navigation: Home, About, Experience, Gallery
@@ -651,14 +745,13 @@ The grid will automatically arrange these images, fill any gaps, and include the
 - Resume: Hosted on raydiwill.github.io/resume/resume.pdf
 - Contact form: Formspree endpoint active with AJAX submission
 
-### Accessibility Standards ✅ Implemented
+### Accessibility Standards ✅ Implemented (Score: 96/100)
 - WCAG 2.1 Level AA compliance
 - All images have descriptive alt text
 - All icon links have aria-labels
 - All forms have proper ARIA attributes
 - Keyboard navigation fully supported
 - Screen reader compatible
-- 96/100 Lighthouse accessibility score
 
 ## Testing Standards
 
@@ -673,6 +766,14 @@ The grid will automatically arrange these images, fill any gaps, and include the
   - Responsive design (2 tests)
   - External links validation (2 tests)
 
+### CI/CD Pipeline ✅ Configured
+- GitHub Actions workflow: `.github/workflows/deploy.yml`
+- Automated testing on push to master branch
+- HTML validation with html-validate
+- Playwright E2E tests before deployment
+- Test reports uploaded on failure
+- Automatic deployment to GitHub Pages
+
 ### Future Test Opportunities (Optional)
 - About page test suite
 - Experience page test suite
@@ -680,3 +781,45 @@ The grid will automatically arrange these images, fill any gaps, and include the
 - Form submission integration tests
 - Visual regression testing
 - Performance monitoring tests
+- Cross-browser compatibility tests
+
+## Maintenance Guidelines
+
+### Regular Updates
+1. **Content Refresh**
+   - Update work experience as roles change
+   - Add new projects to showcase
+   - Refresh photography gallery images
+   - Update resume PDF link
+
+2. **Performance Monitoring**
+   - Run Lighthouse audits quarterly
+   - Monitor Core Web Vitals
+   - Check for broken links
+   - Review analytics (if implemented)
+
+3. **Security Updates**
+   - Update dependencies: `npm update`
+   - Check for security vulnerabilities: `npm audit`
+   - Review and update external API integrations (Formspree)
+
+4. **Testing**
+   - Run tests before major updates: `npm test`
+   - Add new tests for new features
+   - Update test data as content changes
+
+### Performance Optimization Checklist
+**Before deploying new images:**
+- [ ] Convert to WebP format
+- [ ] Compress with quality 70-85
+- [ ] Resize to appropriate dimensions
+- [ ] Add explicit width/height attributes
+- [ ] Use lazy loading for below-fold images
+- [ ] Test with Lighthouse
+
+**Before adding new content:**
+- [ ] Check for accessibility (ARIA labels, alt text)
+- [ ] Verify SEO meta tags
+- [ ] Test on mobile/tablet viewports
+- [ ] Run E2E tests
+- [ ] Validate HTML
