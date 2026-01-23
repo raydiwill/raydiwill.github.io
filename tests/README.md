@@ -1,5 +1,20 @@
 # Portfolio Website Tests
 
+## Test Coverage
+
+The test suite covers:
+
+### Index page:
+
+✅ **Basic Loading** - Page title, hero section, taglines  
+✅ **Navigation** - All nav links (Home, About, Experience, Gallery, Resume)  
+✅ **Projects** - All 4 project cards with correct links  
+✅ **Contact Form** - Form fields, labels, validation  
+✅ **Social Media** - GitHub, LinkedIn, Medium, Instagram, Facebook links  
+✅ **Footer** - Contact information (address, phone, email)  
+✅ **Responsive Design** - Mobile, tablet, and desktop viewports  
+✅ **Security** - External links have proper attributes
+
 ## Setup
 
 1. **Install dependencies** (if not already done):
@@ -39,34 +54,15 @@ npx playwright test --debug
 npx playwright show-report
 ```
 
-## Test Coverage
-
-The test suite covers:
-
-✅ **Basic Loading** - Page title, hero section, taglines  
-✅ **Navigation** - All nav links (Home, About, Experience, Gallery, Resume)  
-✅ **Projects** - All 4 project cards with correct links  
-✅ **Contact Form** - Form fields, labels, validation  
-✅ **Social Media** - GitHub, LinkedIn, Medium, Instagram, Facebook links  
-✅ **Footer** - Contact information (address, phone, email)  
-✅ **Responsive Design** - Mobile, tablet, and desktop viewports  
-✅ **Security** - External links have proper attributes
-
 ## Test Configuration
 
-By default, tests run against your **live GitHub Pages site**: `https://raydiwill.github.io`
+By default, tests run against your **Localhost site**
 
-To test locally instead, update the `BASE_URL` in [home.spec.js](home.spec.js):
+To test differently, update the `BASE_URL` in [home.spec.js](home.spec.js):
 
 ```javascript
-// For live site (default):
-const BASE_URL = 'https://raydiwill.github.io';
-
-// For local files:
-const BASE_URL = 'file://' + require('path').resolve(__dirname, '../index.html');
-
-// For local server (if you run one):
-const BASE_URL = 'http://localhost:8080';
+// For local server (default):
+const BASE_URL = 'http://localhost:port';
 ```
 
 ## Tips for Beginners
@@ -90,3 +86,7 @@ const BASE_URL = 'http://localhost:8080';
 
 **Want to run only one test?**  
 → Change `test('name', ...)` to `test.only('name', ...)`
+
+## Next steps
+
+Write test cases for other pages - about -> experience -> gallery
