@@ -254,7 +254,7 @@ raydiwill.github.io/
 │   │   ├── main.purged.css     # ✅ Production CSS (purged)
 │   │   ├── noscript.css        # ✅ Fallback styles
 │   │   └── fontawesome-all.min.css  # ✅ Icon fonts
-│   ├── js/                 # ✅ Deferred scripts
+│   ├── js/                 # ✅ Deferred scripts (includes analytics.js)
 │   ├── sass/               # ⚠️ Optional - can be removed if no future customization
 │   └── webfonts/           # ✅ Font Awesome fonts
 ├── images/
@@ -460,7 +460,13 @@ echo "⚠️  To remove elements.html and SASS sources, do so manually"
    - Proper heading hierarchy
    - Semantic HTML5 elements
 
-14. **Testing Infrastructure (✅ Complete - 26 Passing Tests)**
+14. **Google Analytics (✅ Complete)**
+   - GA4 Measurement ID: G-9E1HTC137J
+   - Tracking script: `assets/js/analytics.js`
+   - Dynamically injected on all pages (index, about, experience, gallery)
+   - Tracks page views, user engagement, and acquisition sources
+
+15. **Testing Infrastructure (✅ Complete - 26 Passing Tests)**
    - Playwright E2E test suite
    - Comprehensive test coverage:
      - Page load tests
@@ -474,7 +480,7 @@ echo "⚠️  To remove elements.html and SASS sources, do so manually"
    - CI/CD ready configuration
    - Test reports and debugging tools
 
-15. **Performance Optimization (⏳ In Progress - Score: 75/100)**
+16. **Performance Optimization (⏳ In Progress - Score: 75/100)**
    - ✅ CSS purged with PurgeCSS
    - ✅ JavaScript deferred
    - ✅ Images use WebP format
@@ -500,7 +506,7 @@ echo "⚠️  To remove elements.html and SASS sources, do so manually"
 - [ ] Decide whether to keep assets/sass/ (only needed for future customization)
 
 **Low Priority (Optional Enhancements):**
-- [ ] Add Google Analytics for visitor tracking
+- [x] Add Google Analytics for visitor tracking (GA4: G-9E1HTC137J)
 - [ ] Add project detail pages (currently links go to GitHub repos)
 - [ ] Consider adding blog section
 - [ ] Create test suite for About, Experience, Gallery pages
